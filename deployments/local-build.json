@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "project": "parametric-coverage-pool",
+  "status": "LOCAL_ONLY_NOT_DEPLOYED",
+  "contract_address": null,
+  "network": null,
+  "explorer_contract_url": null,
+  "demo_executed": false,
+  "pushed": false,
+  "github_repository_created": false,
+  "portal_submitted": false,
+  "runner": "py-genlayer:1jb45aa8ynh2a9c9xn3b7qqh8sm5q93hwfp7jqmwsfhh8jpz09h6",
+  "verification": {
+    "checked_at_utc": "2026-11-10T20:48:00.119804+00:00",
+    "contract_sha256": "69749c18784d789e1a94758534050132dd275f0a4c7b1814ded8faa22e31e461",
+    "lint_and_sdk_validation": "PASS",
+    "direct_tests": {
+      "passed": 69,
+      "failed": 0
+    },
+    "transcript": "verification/checks.txt",
+    "individual_results": "verification/test-results.md"
+  }
+}

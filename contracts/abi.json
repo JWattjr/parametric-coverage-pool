@@ -1,0 +1,169 @@
+{
+  "ctor": {
+    "params": [
+      [
+        "pool_id",
+        "string"
+      ],
+      [
+        "services_json",
+        "string"
+      ],
+      [
+        "triggers_json",
+        "string"
+      ],
+      [
+        "premium_bps",
+        "int"
+      ],
+      [
+        "claim_period_seconds",
+        "int"
+      ],
+      [
+        "historical_demo_mode",
+        "bool"
+      ]
+    ],
+    "kwparams": {}
+  },
+  "methods": {
+    "buy_policy": {
+      "params": [
+        [
+          "policy_id",
+          "string"
+        ],
+        [
+          "service_id",
+          "string"
+        ],
+        [
+          "trigger_id",
+          "string"
+        ],
+        [
+          "coverage_units",
+          "int"
+        ],
+        [
+          "window_start_iso",
+          "string"
+        ],
+        [
+          "window_end_iso",
+          "string"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": false,
+      "ret": "dict",
+      "payable": false
+    },
+    "claim": {
+      "params": [
+        [
+          "policy_id",
+          "string"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": false,
+      "ret": "dict",
+      "payable": false
+    },
+    "deposit": {
+      "params": [
+        [
+          "units",
+          "int"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": false,
+      "ret": "int",
+      "payable": false
+    },
+    "expire_policy": {
+      "params": [
+        [
+          "policy_id",
+          "string"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": false,
+      "ret": "null",
+      "payable": false
+    },
+    "get_account": {
+      "params": [
+        [
+          "account",
+          "string"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": true,
+      "ret": "dict"
+    },
+    "get_accounting": {
+      "params": [],
+      "kwparams": {},
+      "readonly": true,
+      "ret": "dict"
+    },
+    "get_assessment": {
+      "params": [
+        [
+          "policy_id",
+          "string"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": true,
+      "ret": "dict"
+    },
+    "get_policy": {
+      "params": [
+        [
+          "policy_id",
+          "string"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": true,
+      "ret": "dict"
+    },
+    "get_pool": {
+      "params": [],
+      "kwparams": {},
+      "readonly": true,
+      "ret": "dict"
+    },
+    "get_sources": {
+      "params": [
+        [
+          "policy_id",
+          "string"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": true,
+      "ret": "array"
+    },
+    "withdraw": {
+      "params": [
+        [
+          "shares",
+          "int"
+        ]
+      ],
+      "kwparams": {},
+      "readonly": false,
+      "ret": "int",
+      "payable": false
+    }
+  }
+}

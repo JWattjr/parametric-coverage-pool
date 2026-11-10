@@ -1,0 +1,6 @@
+Working directory: C:\Users\User\Desktop\Genlayer apps\intelligent-contracts-v2\parametric-coverage-pool
+Checked at UTC: 2026-11-10T20:44:24.834506+00:00
+Contract SHA-256: bae8e74711009c5f0e84e519d03e77f31cef6c1e2a3edc3b88f2fc9eb9b35472
+
+COMMAND: "C:\Users\User\Desktop\Genlayer apps\intelligent-contracts-v2\.venv\Scripts\python.exe" -B -c "from genvm_linter.cli import cli; cli()" check contracts/parametric_coverage_pool.py --json
+EXIT CODE: 4294967295

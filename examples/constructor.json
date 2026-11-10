@@ -1,0 +1,8 @@
+{
+  "pool_id": "coverage-pool-normal",
+  "services_json": "[{\"id\": \"api\", \"name\": \"Example API\", \"urls\": [\"https://status.example.org/incidents/one\"]}]",
+  "triggers_json": "[{\"id\": \"major_30\", \"minimum_severity\": \"MAJOR\", \"minimum_minutes\": 30}]",
+  "premium_bps": 1000,
+  "claim_period_seconds": 86400,
+  "historical_demo_mode": false
+}
