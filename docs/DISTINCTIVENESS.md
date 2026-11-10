@@ -13,4 +13,4 @@ Scope: source/document review of the closest local portfolio mechanisms and stan
 
 Source anchors: `ParametricCoveragePool.deposit`, `withdraw`, `buy_policy`, `claim`, `expire_policy`, and `get_accounting`. The invariant distinguishing this pool is that aggregate OPEN coverage never exceeds shared capital and withdrawals cannot remove backing, even after other policies earn premiums or pay losses.
 
-Evidence status: local lint/SDK validation and mocked direct tests only. Anonymous incident URL checks support a proposed demo; no StudioNet contract exists for this project. The comparison does not establish economic soundness, legal insurance, production safety, ecosystem originality, or future Portal acceptance.
+Evidence status: local lint/SDK validation and 86 mocked direct tests passed. The authorised StudioNet run and exact observed outcomes are recorded in [DEMO_RESULTS.md](DEMO_RESULTS.md); consult that record rather than treating the original proposed outcomes as observed. The comparison does not establish economic soundness, legal insurance, production safety, ecosystem originality, or future Portal acceptance.

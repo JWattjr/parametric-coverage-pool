@@ -2,7 +2,7 @@
 
 **Earliest deadline: 2026-12-04 at 19:00 UTC (20:00 Africa/Lagos). Complete the proposed sequence before this deadline, or redesign the plan using newly checked incidents.**
 
-Status: PLAN ONLY. No deployment, runtime RPC, transaction, publication, or Portal submission was performed. URL checks below were anonymous HTTP reads on 2026-11-10; exact timestamps, byte sizes, field presence, and SHA-256 values are in [incident-url-checks.json](../verification/incident-url-checks.json).
+Status: the authorised 2026-11-11 StudioNet run is recorded in [DEMO_RESULTS.md](DEMO_RESULTS.md). The original proposed sequence is preserved below. No publication or Portal submission occurred. URL checks below were anonymous HTTP reads on 2026-11-10; exact timestamps, byte sizes, field presence, and SHA-256 values are in [incident-url-checks.json](../verification/incident-url-checks.json).
 
 ## Permanent incident evidence
 
@@ -39,7 +39,7 @@ Run the complete proposed sequence before the earliest deadline, or redesign the
 4. Claim `compact` and `truncated` only while eligible. Check exact source status/count/hash/quote records and validator-derived facts. The proposed evidence supports two 100-unit payouts. Claim `minor` and `outside`: neither should pay. Replayed claims on PAID/DENIED policies should revert.
 5. If any judgment is UNCERTAIN or consensus does not finalise successfully, record the outcome and read back unchanged balances/exposure. Do not count the expected result as observed. UNCERTAIN policies remain OPEN for holder retry through deadline; anyone can expire them strictly afterwards. The direct suite supplies deterministic mocked expiry and uncertain-retry demonstrations without waiting a month on StudioNet.
 6. If all four expected terminal outcomes occur, read back capital 840, exposure 0, payouts 200, premiums 40, deposits 1,000. The underwriter burns all 1,000 shares for 840 units. Verify `1000 + 40 = 0 + 200 + 840` and holder payout credits total 200.
-7. Any future release evidence must separate finality from execution outcome, distinguish expected rollbacks from operator errors, and include a direct Explorer CONTRACT URL for the actual deployed address on the verified network as its own evidence entry. Verify it opens the correct contract; use Portal type `GenLayer Explorer Contract` if supported. Transaction/source/repository URLs are additional evidence. No such address or submission exists now.
+7. Any future release evidence must separate finality from execution outcome, distinguish expected rollbacks from operator errors, and include a direct Explorer CONTRACT URL for the actual deployed address on the verified network as its own evidence entry. Verify it opens the correct contract; use Portal type `GenLayer Explorer Contract` if supported. Transaction/source/repository URLs are additional evidence. The actual address and browser-verified contract evidence entry are recorded in DEMO_RESULTS.md; no Portal submission exists.
 
 ## Limits
 

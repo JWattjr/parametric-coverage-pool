@@ -45,10 +45,11 @@ Views: `get_pool`, `get_policy`, `get_account`, `get_accounting`, `get_assessmen
 - [Design and rounding rules](docs/DESIGN.md)
 - [Tests and invariant mapping](docs/TEST_MATRIX.md)
 - [Local distinctiveness comparison](docs/DISTINCTIVENESS.md)
-- [Proposed StudioNet demo, not executed](docs/DEMO_PLAN.md)
+- [StudioNet demo plan](docs/DEMO_PLAN.md)
+- [Recorded StudioNet demo results](docs/DEMO_RESULTS.md)
 - [Exact verification transcript](verification/checks.txt)
 - [Per-case test results](verification/test-results.md)
 
-No deployment, push, GitHub repository creation, visibility change, or Portal submission is included. Public URL availability was checked anonymously for the demo plan only. Stable incident-specific URLs are not immutable publisher commitments; validators compare incident facts rather than response bytes. The fixed severity taxonomy deliberately treats other labels as UNCERTAIN. No legal coverage, real insurance, payment custody, publisher authentication, or production underwriting is implemented.
+The authorised StudioNet demonstration is recorded in [DEMO_RESULTS.md](docs/DEMO_RESULTS.md). No push, GitHub repository creation, visibility change, or Portal submission occurred. Public source URLs were rechecked anonymously for that run. Stable incident-specific URLs are not immutable publisher commitments; validators compare incident facts rather than response bytes. The fixed severity taxonomy deliberately treats other labels as UNCERTAIN. No legal coverage, real insurance, payment custody, publisher authentication, or production underwriting is implemented.
 
 Final local result: **86 passed in 17.06s**; lint 3/3 and SDK validation passed (11 methods: 6 views, 5 writes; 6 constructor parameters). ABI extraction passed. The I200 informational notice reports a newer runner in the cached bundle; the auction runner remains pinned. An initial unpinned release lookup was interrupted before testing; its transcript is retained separately.

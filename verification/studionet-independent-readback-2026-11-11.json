@@ -1,0 +1,517 @@
+{
+  "checked_at_utc": "2026-11-10T23:27:56.829042+00:00",
+  "address": "0x264f3189aFccA46881DB959Aa1a20D0E2bA12521",
+  "chain_id": 61999,
+  "client_version": "0.18.0",
+  "view_calls": [
+    {
+      "method": "get_pool",
+      "args": [],
+      "value": {
+        "account_count": 2,
+        "claim_period_seconds": 2592000,
+        "historical_demo_mode": true,
+        "owner": "0xdb433ff614bdd1ece21aa97221c3e0a7ecf79c92",
+        "policy_count": 4,
+        "pool_id": "coverage-studionet-20261111",
+        "premium_bps": 1000,
+        "services": [
+          {
+            "id": "actions_compact",
+            "name": "GitHub Actions compact incident",
+            "urls": [
+              "https://www.githubstatus.com/api/v2/incidents/h02n9572mx9y.json"
+            ]
+          },
+          {
+            "id": "actions_truncated",
+            "name": "GitHub Actions truncated incident",
+            "urls": [
+              "https://www.githubstatus.com/api/v2/incidents/xxb3l2bm76dr.json"
+            ]
+          },
+          {
+            "id": "minor_incident",
+            "name": "GitHub minor incident",
+            "urls": [
+              "https://www.githubstatus.com/api/v2/incidents/c9px7cw2ghrs.json"
+            ]
+          }
+        ],
+        "triggers": [
+          {
+            "id": "major_30",
+            "minimum_minutes": 30,
+            "minimum_severity": "MAJOR"
+          }
+        ]
+      }
+    },
+    {
+      "method": "get_accounting",
+      "args": [],
+      "value": {
+        "collateralised": true,
+        "conserved": true,
+        "deposited_units": 1000,
+        "free_capital_units": 0,
+        "open_exposure_units": 0,
+        "payouts_made_units": 200,
+        "pool_capital_units": 0,
+        "premiums_paid_units": 40,
+        "total_shares": 0,
+        "withdrawn_units": 840
+      }
+    },
+    {
+      "method": "get_account",
+      "args": [
+        "0xdB433ff614bDD1ecE21Aa97221C3E0a7ecf79c92"
+      ],
+      "value": {
+        "deposited_units": 1000,
+        "payouts_received_units": 0,
+        "policy_count": 0,
+        "premiums_paid_units": 0,
+        "shares": 0,
+        "withdrawn_units": 840
+      }
+    },
+    {
+      "method": "get_account",
+      "args": [
+        "0x2C8EB5dB1105A85BE66BadafeD88D10cF393CDD8"
+      ],
+      "value": {
+        "deposited_units": 0,
+        "payouts_received_units": 200,
+        "policy_count": 4,
+        "premiums_paid_units": 40,
+        "shares": 0,
+        "withdrawn_units": 0
+      }
+    },
+    {
+      "method": "get_policy",
+      "args": [
+        "compact"
+      ],
+      "value": {
+        "claim_deadline": "2026-12-04T19:00:00Z",
+        "coverage_units": 100,
+        "holder": "0x2c8eb5db1105a85be66badafed88d10cf393cdd8",
+        "policy_id": "compact",
+        "premium_units": 10,
+        "service_id": "actions_compact",
+        "status": "PAID",
+        "trigger_id": "major_30",
+        "window_end": "2026-11-04T19:00:00Z",
+        "window_start": "2026-11-04T17:00:00Z"
+      }
+    },
+    {
+      "method": "get_assessment",
+      "args": [
+        "compact"
+      ],
+      "value": {
+        "evidence_digest": "sha256:cb95565d4ae790518f8a3da3251a778bbf6f331dd35514589a058dee260b3dd2",
+        "input_snapshot_digest": "sha256:9d67cad357de1471c01c35ea1ea92283ea7e8db6a8634c7157544f532ad2fae9",
+        "judgment": {
+          "end": "2026-11-04T18:16:08.361Z",
+          "incident": "Incident with Actions",
+          "quotes": {
+            "end": {
+              "line": "\"resolved_at\":\"2026-11-04T18:16:08.361Z\"",
+              "url": "https://www.githubstatus.com/api/v2/incidents/h02n9572mx9y.json"
+            },
+            "incident": {
+              "line": "\"name\":\"Incident with Actions\"",
+              "url": "https://www.githubstatus.com/api/v2/incidents/h02n9572mx9y.json"
+            },
+            "severity": {
+              "line": "\"impact\":\"major\"",
+              "url": "https://www.githubstatus.com/api/v2/incidents/h02n9572mx9y.json"
+            },
+            "start": {
+              "line": "\"started_at\":\"2026-11-04T17:40:33.662Z\"",
+              "url": "https://www.githubstatus.com/api/v2/incidents/h02n9572mx9y.json"
+            }
+          },
+          "severity": "major",
+          "start": "2026-11-04T17:40:33.662Z",
+          "verdict": "QUALIFYING"
+        },
+        "snapshot_digest": "sha256:63e1ed26a542584f9bd31d4b7a8c82be8048854a03bc5dcb2bf42393564cdc9b",
+        "sources": [
+          {
+            "available": true,
+            "byte_count": 2965,
+            "content_digest": "sha256:73d9702fc271f79e1a7620bdea3098b95f71bb6e0f6a8fb7f953d280bcf7cba6",
+            "kept_byte_count": 2965,
+            "status": "fetched",
+            "text": "{\"page\":{\"id\":\"kctbh9vrtdwd\",\"name\":\"GitHub\",\"url\":\"https://www.githubstatus.com\",\"time_zone\":\"Etc/UTC\",\"updated_at\":\"2026-11-10T21:34:20.716Z\"},\"incident\":{\"id\":\"h02n9572mx9y\",\"name\":\"Incident with Actions\",\"status\":\"resolved\",\"created_at\":\"2026-11-04T17:40:33.675Z\",\"updated_at\":\"2026-11-07T01:10:18.506Z\",\"monitoring_at\":\"2026-11-04T18:07:51.114Z\",\"resolved_at\":\"2026-11-04T18:16:08.361Z\",\"impact\":\"major\",\"shortlink\":\"https://stspg.io/7pwv28hvkmz8\",\"started_at\":\"2026-11-04T17:40:33.662Z\",\"page_id\":\"kctbh9vrtdwd\",\"incident_updates\":[{\"id\":\"qlllwdjlwh6k\",\"status\":\"resolved\",\"body\":\"Please refer to the combined summary in this related incident: https://www.githubstatus.com/incidents/xr3myzj7ms51\",\"incident_id\":\"h02n9572mx9y\",\"created_at\":\"2026-11-04T18:16:08.361Z\",\"updated_at\":\"2026-11-07T01:10:18.501Z\",\"display_at\":\"2026-11-04T18:16:08.361Z\",\"affected_components\":[{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"operational\",\"new_status\":\"operational\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"dvjxb8x3vwd6\",\"status\":\"monitoring\",\"body\":\"The degradation affecting Actions has been mitigated. We are monitoring to ensure stability.\",\"incident_id\":\"h02n9572mx9y\",\"created_at\":\"2026-11-04T18:07:51.114Z\",\"updated_at\":\"2026-11-04T18:07:51.114Z\",\"display_at\":\"2026-11-04T18:07:51.114Z\",\"affected_components\":[{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"partial_outage\",\"new_status\":\"operational\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"6r53z2wtmk93\",\"status\":\"investigating\",\"body\":\"We have identified an issue with events that might trigger Actions. We have applied mitigations and are monitoring for recovery at this point. Customers may observe delayed status updates for their jobs.\",\"incident_id\":\"h02n9572mx9y\",\"created_at\":\"2026-11-04T17:53:11.120Z\",\"updated_at\":\"2026-11-04T17:53:11.120Z\",\"display_at\":\"2026-11-04T17:53:11.120Z\",\"affected_components\":[{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"partial_outage\",\"new_status\":\"partial_outage\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"81pt66zrbxnn\",\"status\":\"investigating\",\"body\":\"We are investigating reports of degraded availability for Actions\",\"incident_id\":\"h02n9572mx9y\",\"created_at\":\"2026-11-04T17:40:33.887Z\",\"updated_at\":\"2026-11-04T17:40:33.887Z\",\"display_at\":\"2026-11-04T17:40:33.887Z\",\"affected_components\":[{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"operational\",\"new_status\":\"partial_outage\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null}],\"components\":[{\"id\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"status\":\"operational\",\"created_at\":\"2019-11-13T18:02:19.432Z\",\"updated_at\":\"2026-11-10T17:28:17.860Z\",\"position\":7,\"description\":\"Workflows, Compute and Orchestration for GitHub Actions\",\"showcase\":true,\"start_date\":null,\"group_id\":null,\"page_id\":\"kctbh9vrtdwd\",\"group\":false,\"only_show_if_degraded\":false}],\"reminder_intervals\":null}}",
+            "url": "https://www.githubstatus.com/api/v2/incidents/h02n9572mx9y.json"
+          }
+        ]
+      }
+    },
+    {
+      "method": "get_sources",
+      "args": [
+        "compact"
+      ],
+      "value": [
+        {
+          "available": true,
+          "byte_count": 2965,
+          "content_digest": "sha256:73d9702fc271f79e1a7620bdea3098b95f71bb6e0f6a8fb7f953d280bcf7cba6",
+          "kept_byte_count": 2965,
+          "status": "fetched",
+          "text": "{\"page\":{\"id\":\"kctbh9vrtdwd\",\"name\":\"GitHub\",\"url\":\"https://www.githubstatus.com\",\"time_zone\":\"Etc/UTC\",\"updated_at\":\"2026-11-10T21:34:20.716Z\"},\"incident\":{\"id\":\"h02n9572mx9y\",\"name\":\"Incident with Actions\",\"status\":\"resolved\",\"created_at\":\"2026-11-04T17:40:33.675Z\",\"updated_at\":\"2026-11-07T01:10:18.506Z\",\"monitoring_at\":\"2026-11-04T18:07:51.114Z\",\"resolved_at\":\"2026-11-04T18:16:08.361Z\",\"impact\":\"major\",\"shortlink\":\"https://stspg.io/7pwv28hvkmz8\",\"started_at\":\"2026-11-04T17:40:33.662Z\",\"page_id\":\"kctbh9vrtdwd\",\"incident_updates\":[{\"id\":\"qlllwdjlwh6k\",\"status\":\"resolved\",\"body\":\"Please refer to the combined summary in this related incident: https://www.githubstatus.com/incidents/xr3myzj7ms51\",\"incident_id\":\"h02n9572mx9y\",\"created_at\":\"2026-11-04T18:16:08.361Z\",\"updated_at\":\"2026-11-07T01:10:18.501Z\",\"display_at\":\"2026-11-04T18:16:08.361Z\",\"affected_components\":[{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"operational\",\"new_status\":\"operational\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"dvjxb8x3vwd6\",\"status\":\"monitoring\",\"body\":\"The degradation affecting Actions has been mitigated. We are monitoring to ensure stability.\",\"incident_id\":\"h02n9572mx9y\",\"created_at\":\"2026-11-04T18:07:51.114Z\",\"updated_at\":\"2026-11-04T18:07:51.114Z\",\"display_at\":\"2026-11-04T18:07:51.114Z\",\"affected_components\":[{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"partial_outage\",\"new_status\":\"operational\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"6r53z2wtmk93\",\"status\":\"investigating\",\"body\":\"We have identified an issue with events that might trigger Actions. We have applied mitigations and are monitoring for recovery at this point. Customers may observe delayed status updates for their jobs.\",\"incident_id\":\"h02n9572mx9y\",\"created_at\":\"2026-11-04T17:53:11.120Z\",\"updated_at\":\"2026-11-04T17:53:11.120Z\",\"display_at\":\"2026-11-04T17:53:11.120Z\",\"affected_components\":[{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"partial_outage\",\"new_status\":\"partial_outage\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"81pt66zrbxnn\",\"status\":\"investigating\",\"body\":\"We are investigating reports of degraded availability for Actions\",\"incident_id\":\"h02n9572mx9y\",\"created_at\":\"2026-11-04T17:40:33.887Z\",\"updated_at\":\"2026-11-04T17:40:33.887Z\",\"display_at\":\"2026-11-04T17:40:33.887Z\",\"affected_components\":[{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"operational\",\"new_status\":\"partial_outage\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null}],\"components\":[{\"id\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"status\":\"operational\",\"created_at\":\"2019-11-13T18:02:19.432Z\",\"updated_at\":\"2026-11-10T17:28:17.860Z\",\"position\":7,\"description\":\"Workflows, Compute and Orchestration for GitHub Actions\",\"showcase\":true,\"start_date\":null,\"group_id\":null,\"page_id\":\"kctbh9vrtdwd\",\"group\":false,\"only_show_if_degraded\":false}],\"reminder_intervals\":null}}",
+          "url": "https://www.githubstatus.com/api/v2/incidents/h02n9572mx9y.json"
+        }
+      ]
+    },
+    {
+      "method": "get_policy",
+      "args": [
+        "truncated"
+      ],
+      "value": {
+        "claim_deadline": "2026-12-10T00:00:00Z",
+        "coverage_units": 100,
+        "holder": "0x2c8eb5db1105a85be66badafed88d10cf393cdd8",
+        "policy_id": "truncated",
+        "premium_units": 10,
+        "service_id": "actions_truncated",
+        "status": "PAID",
+        "trigger_id": "major_30",
+        "window_end": "2026-11-10T00:00:00Z",
+        "window_start": "2026-11-09T00:00:00Z"
+      }
+    },
+    {
+      "method": "get_assessment",
+      "args": [
+        "truncated"
+      ],
+      "value": {
+        "evidence_digest": "sha256:1c596c44964d2d38c5e4c29f0cad49c1d417de373175fc44d6434d90c4303f1d",
+        "input_snapshot_digest": "sha256:2ce7c0701eeda9421402c466b7546997cf4c922a0b44ee855d457e48e7d64ae0",
+        "judgment": {
+          "end": "2026-11-09T11:50:35.774Z",
+          "incident": "Incident with Webhooks and Actions",
+          "quotes": {
+            "end": {
+              "line": "\"resolved_at\":\"2026-11-09T11:50:35.774Z\"",
+              "url": "https://www.githubstatus.com/api/v2/incidents/xxb3l2bm76dr.json"
+            },
+            "incident": {
+              "line": "\"name\":\"Incident with Webhooks and Actions\"",
+              "url": "https://www.githubstatus.com/api/v2/incidents/xxb3l2bm76dr.json"
+            },
+            "severity": {
+              "line": "\"impact\":\"major\"",
+              "url": "https://www.githubstatus.com/api/v2/incidents/xxb3l2bm76dr.json"
+            },
+            "start": {
+              "line": "\"started_at\":\"2026-11-09T10:00:35.209Z\"",
+              "url": "https://www.githubstatus.com/api/v2/incidents/xxb3l2bm76dr.json"
+            }
+          },
+          "severity": "major",
+          "start": "2026-11-09T10:00:35.209Z",
+          "verdict": "QUALIFYING"
+        },
+        "snapshot_digest": "sha256:d2ec94b1a4fc0906cc1308857c6406dcf04848170ace660236e968a10090335e",
+        "sources": [
+          {
+            "available": true,
+            "byte_count": 6062,
+            "content_digest": "sha256:fa4af07296c612edb6c92449cdd0350108e8af882b9d58abd38bbab3f585586e",
+            "kept_byte_count": 5000,
+            "status": "truncated",
+            "text": "{\"page\":{\"id\":\"kctbh9vrtdwd\",\"name\":\"GitHub\",\"url\":\"https://www.githubstatus.com\",\"time_zone\":\"Etc/UTC\",\"updated_at\":\"2026-11-10T21:34:20.716Z\"},\"incident\":{\"id\":\"xxb3l2bm76dr\",\"name\":\"Incident with Webhooks and Actions\",\"status\":\"resolved\",\"created_at\":\"2026-11-09T10:00:35.232Z\",\"updated_at\":\"2026-11-09T11:50:35.805Z\",\"monitoring_at\":\"2026-11-09T11:45:07.476Z\",\"resolved_at\":\"2026-11-09T11:50:35.774Z\",\"impact\":\"major\",\"shortlink\":\"https://stspg.io/4vdghm7tycm4\",\"started_at\":\"2026-11-09T10:00:35.209Z\",\"page_id\":\"kctbh9vrtdwd\",\"incident_updates\":[{\"id\":\"rfpl3twlkw5p\",\"status\":\"resolved\",\"body\":\"This incident has been resolved. Thank you for your patience and understanding as we addressed this issue. A detailed root cause analysis will be shared as soon as it is available.\",\"incident_id\":\"xxb3l2bm76dr\",\"created_at\":\"2026-11-09T11:50:35.774Z\",\"updated_at\":\"2026-11-09T11:50:35.774Z\",\"display_at\":\"2026-11-09T11:50:35.774Z\",\"affected_components\":[{\"code\":\"4230lsnqdsld\",\"name\":\"Webhooks\",\"old_status\":\"operational\",\"new_status\":\"operational\"},{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"operational\",\"new_status\":\"operational\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"dl8635xq259g\",\"status\":\"monitoring\",\"body\":\"The degradation affecting Webhooks has been mitigated. We are monitoring to ensure stability.\",\"incident_id\":\"xxb3l2bm76dr\",\"created_at\":\"2026-11-09T11:45:07.476Z\",\"updated_at\":\"2026-11-09T11:45:07.476Z\",\"display_at\":\"2026-11-09T11:45:07.476Z\",\"affected_components\":[{\"code\":\"4230lsnqdsld\",\"name\":\"Webhooks\",\"old_status\":\"degraded_performance\",\"new_status\":\"operational\"},{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"operational\",\"new_status\":\"operational\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"lnkmmfvgdp1k\",\"status\":\"investigating\",\"body\":\"Webhooks is experiencing degraded performance. We are continuing to investigate.\",\"incident_id\":\"xxb3l2bm76dr\",\"created_at\":\"2026-11-09T11:42:04.835Z\",\"updated_at\":\"2026-11-09T11:42:04.835Z\",\"display_at\":\"2026-11-09T11:42:04.835Z\",\"affected_components\":[{\"code\":\"4230lsnqdsld\",\"name\":\"Webhooks\",\"old_status\":\"partial_outage\",\"new_status\":\"degraded_performance\"},{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"operational\",\"new_status\":\"operational\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"mckrt9nsd4z9\",\"status\":\"investigating\",\"body\":\"Webhooks is experiencing degraded availability. We are continuing to investigate.\",\"incident_id\":\"xxb3l2bm76dr\",\"created_at\":\"2026-11-09T11:17:28.545Z\",\"updated_at\":\"2026-11-09T11:17:28.545Z\",\"display_at\":\"2026-11-09T11:17:28.545Z\",\"affected_components\":[{\"code\":\"4230lsnqdsld\",\"name\":\"Webhooks\",\"old_status\":\"degraded_performance\",\"new_status\":\"partial_outage\"},{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"operational\",\"new_status\":\"operational\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"ghj248c9xm7v\",\"status\":\"investigating\",\"body\":\"The degradation affecting Actions has been mitigated. We are monitoring to ensure stability.\",\"incident_id\":\"xxb3l2bm76dr\",\"created_at\":\"2026-11-09T11:06:35.830Z\",\"updated_at\":\"2026-11-09T11:06:35.830Z\",\"display_at\":\"2026-11-09T11:06:35.830Z\",\"affected_components\":[{\"code\":\"4230lsnqdsld\",\"name\":\"Webhooks\",\"old_status\":\"degraded_performance\",\"new_status\":\"degraded_performance\"},{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"degraded_performance\",\"new_status\":\"operational\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"vr194tzdpgw0\",\"status\":\"investigating\",\"body\":\"We've applied a mitigation and are monitoring for recovery.\",\"incident_id\":\"xxb3l2bm76dr\",\"created_at\":\"2026-11-09T10:47:25.350Z\",\"updated_at\":\"2026-11-09T10:47:25.350Z\",\"display_at\":\"2026-11-09T10:47:25.350Z\",\"affected_components\":[{\"code\":\"4230lsnqdsld\",\"name\":\"Webhooks\",\"old_status\":\"degraded_performance\",\"new_status\":\"degraded_performance\"},{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"degraded_performance\",\"new_status\":\"degraded_performance\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"2rpsj0zkt5mg\",\"status\":\"investigating\",\"body\":\"We're investigating delays in Actions runs start times and webhook deliveries.\",\"incident_id\":\"xxb3l2bm76dr\",\"created_at\":\"2026-11-09T10:28:19.735Z\",\"updated_at\":\"2026-11-09T10:28:19.735Z\",\"display_at\":\"2026-11-09T10:28:19.735Z\",\"affected_components\":[{\"code\":\"4230lsnqdsld\",\"name\":\"Webhooks\",\"old_status\":\"degraded_performance\",\"new_status\":\"degraded_performance\"},{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"degraded_performance\",\"new_status\":\"degraded_performance\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"b6phqx66lpjj\",\"status\":\"investigating\",\"body\":\"We are investigating reports of degraded performance for Actions and Webhooks\",\"incident_id\":\"xxb3l2bm76dr\",\"created_at\":\"2026-11-09T10:00:35.648Z\",\"updated_at\":\"2026-11-09T10:00:35.648Z\",\"display_at\":\"2026",
+            "url": "https://www.githubstatus.com/api/v2/incidents/xxb3l2bm76dr.json"
+          }
+        ]
+      }
+    },
+    {
+      "method": "get_sources",
+      "args": [
+        "truncated"
+      ],
+      "value": [
+        {
+          "available": true,
+          "byte_count": 6062,
+          "content_digest": "sha256:fa4af07296c612edb6c92449cdd0350108e8af882b9d58abd38bbab3f585586e",
+          "kept_byte_count": 5000,
+          "status": "truncated",
+          "text": "{\"page\":{\"id\":\"kctbh9vrtdwd\",\"name\":\"GitHub\",\"url\":\"https://www.githubstatus.com\",\"time_zone\":\"Etc/UTC\",\"updated_at\":\"2026-11-10T21:34:20.716Z\"},\"incident\":{\"id\":\"xxb3l2bm76dr\",\"name\":\"Incident with Webhooks and Actions\",\"status\":\"resolved\",\"created_at\":\"2026-11-09T10:00:35.232Z\",\"updated_at\":\"2026-11-09T11:50:35.805Z\",\"monitoring_at\":\"2026-11-09T11:45:07.476Z\",\"resolved_at\":\"2026-11-09T11:50:35.774Z\",\"impact\":\"major\",\"shortlink\":\"https://stspg.io/4vdghm7tycm4\",\"started_at\":\"2026-11-09T10:00:35.209Z\",\"page_id\":\"kctbh9vrtdwd\",\"incident_updates\":[{\"id\":\"rfpl3twlkw5p\",\"status\":\"resolved\",\"body\":\"This incident has been resolved. Thank you for your patience and understanding as we addressed this issue. A detailed root cause analysis will be shared as soon as it is available.\",\"incident_id\":\"xxb3l2bm76dr\",\"created_at\":\"2026-11-09T11:50:35.774Z\",\"updated_at\":\"2026-11-09T11:50:35.774Z\",\"display_at\":\"2026-11-09T11:50:35.774Z\",\"affected_components\":[{\"code\":\"4230lsnqdsld\",\"name\":\"Webhooks\",\"old_status\":\"operational\",\"new_status\":\"operational\"},{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"operational\",\"new_status\":\"operational\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"dl8635xq259g\",\"status\":\"monitoring\",\"body\":\"The degradation affecting Webhooks has been mitigated. We are monitoring to ensure stability.\",\"incident_id\":\"xxb3l2bm76dr\",\"created_at\":\"2026-11-09T11:45:07.476Z\",\"updated_at\":\"2026-11-09T11:45:07.476Z\",\"display_at\":\"2026-11-09T11:45:07.476Z\",\"affected_components\":[{\"code\":\"4230lsnqdsld\",\"name\":\"Webhooks\",\"old_status\":\"degraded_performance\",\"new_status\":\"operational\"},{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"operational\",\"new_status\":\"operational\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"lnkmmfvgdp1k\",\"status\":\"investigating\",\"body\":\"Webhooks is experiencing degraded performance. We are continuing to investigate.\",\"incident_id\":\"xxb3l2bm76dr\",\"created_at\":\"2026-11-09T11:42:04.835Z\",\"updated_at\":\"2026-11-09T11:42:04.835Z\",\"display_at\":\"2026-11-09T11:42:04.835Z\",\"affected_components\":[{\"code\":\"4230lsnqdsld\",\"name\":\"Webhooks\",\"old_status\":\"partial_outage\",\"new_status\":\"degraded_performance\"},{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"operational\",\"new_status\":\"operational\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"mckrt9nsd4z9\",\"status\":\"investigating\",\"body\":\"Webhooks is experiencing degraded availability. We are continuing to investigate.\",\"incident_id\":\"xxb3l2bm76dr\",\"created_at\":\"2026-11-09T11:17:28.545Z\",\"updated_at\":\"2026-11-09T11:17:28.545Z\",\"display_at\":\"2026-11-09T11:17:28.545Z\",\"affected_components\":[{\"code\":\"4230lsnqdsld\",\"name\":\"Webhooks\",\"old_status\":\"degraded_performance\",\"new_status\":\"partial_outage\"},{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"operational\",\"new_status\":\"operational\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"ghj248c9xm7v\",\"status\":\"investigating\",\"body\":\"The degradation affecting Actions has been mitigated. We are monitoring to ensure stability.\",\"incident_id\":\"xxb3l2bm76dr\",\"created_at\":\"2026-11-09T11:06:35.830Z\",\"updated_at\":\"2026-11-09T11:06:35.830Z\",\"display_at\":\"2026-11-09T11:06:35.830Z\",\"affected_components\":[{\"code\":\"4230lsnqdsld\",\"name\":\"Webhooks\",\"old_status\":\"degraded_performance\",\"new_status\":\"degraded_performance\"},{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"degraded_performance\",\"new_status\":\"operational\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"vr194tzdpgw0\",\"status\":\"investigating\",\"body\":\"We've applied a mitigation and are monitoring for recovery.\",\"incident_id\":\"xxb3l2bm76dr\",\"created_at\":\"2026-11-09T10:47:25.350Z\",\"updated_at\":\"2026-11-09T10:47:25.350Z\",\"display_at\":\"2026-11-09T10:47:25.350Z\",\"affected_components\":[{\"code\":\"4230lsnqdsld\",\"name\":\"Webhooks\",\"old_status\":\"degraded_performance\",\"new_status\":\"degraded_performance\"},{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"degraded_performance\",\"new_status\":\"degraded_performance\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"2rpsj0zkt5mg\",\"status\":\"investigating\",\"body\":\"We're investigating delays in Actions runs start times and webhook deliveries.\",\"incident_id\":\"xxb3l2bm76dr\",\"created_at\":\"2026-11-09T10:28:19.735Z\",\"updated_at\":\"2026-11-09T10:28:19.735Z\",\"display_at\":\"2026-11-09T10:28:19.735Z\",\"affected_components\":[{\"code\":\"4230lsnqdsld\",\"name\":\"Webhooks\",\"old_status\":\"degraded_performance\",\"new_status\":\"degraded_performance\"},{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"degraded_performance\",\"new_status\":\"degraded_performance\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"b6phqx66lpjj\",\"status\":\"investigating\",\"body\":\"We are investigating reports of degraded performance for Actions and Webhooks\",\"incident_id\":\"xxb3l2bm76dr\",\"created_at\":\"2026-11-09T10:00:35.648Z\",\"updated_at\":\"2026-11-09T10:00:35.648Z\",\"display_at\":\"2026",
+          "url": "https://www.githubstatus.com/api/v2/incidents/xxb3l2bm76dr.json"
+        }
+      ]
+    },
+    {
+      "method": "get_policy",
+      "args": [
+        "minor"
+      ],
+      "value": {
+        "claim_deadline": "2026-12-10T00:00:00Z",
+        "coverage_units": 100,
+        "holder": "0x2c8eb5db1105a85be66badafed88d10cf393cdd8",
+        "policy_id": "minor",
+        "premium_units": 10,
+        "service_id": "minor_incident",
+        "status": "DENIED",
+        "trigger_id": "major_30",
+        "window_end": "2026-11-10T00:00:00Z",
+        "window_start": "2026-11-09T00:00:00Z"
+      }
+    },
+    {
+      "method": "get_assessment",
+      "args": [
+        "minor"
+      ],
+      "value": {
+        "evidence_digest": "sha256:3c5495c0fabe635b174dc7d59788f7133602cc7fc45e6d6c7db1094df8f1acb8",
+        "input_snapshot_digest": "sha256:2f8cfd805b3541e714f724ea862e80de075b6d395cc076af388d7e9eb51df200",
+        "judgment": {
+          "end": "2026-11-09T09:09:56.174Z",
+          "incident": "Increased timeouts due to surge in anonymous users",
+          "quotes": {
+            "end": {
+              "line": "\"resolved_at\":\"2026-11-09T09:09:56.174Z\"",
+              "url": "https://www.githubstatus.com/api/v2/incidents/c9px7cw2ghrs.json"
+            },
+            "incident": {
+              "line": "\"name\":\"Increased timeouts due to surge in anonymous users\"",
+              "url": "https://www.githubstatus.com/api/v2/incidents/c9px7cw2ghrs.json"
+            },
+            "severity": {
+              "line": "\"impact\":\"minor\"",
+              "url": "https://www.githubstatus.com/api/v2/incidents/c9px7cw2ghrs.json"
+            },
+            "start": {
+              "line": "\"started_at\":\"2026-11-09T05:59:07.841Z\"",
+              "url": "https://www.githubstatus.com/api/v2/incidents/c9px7cw2ghrs.json"
+            }
+          },
+          "severity": "minor",
+          "start": "2026-11-09T05:59:07.841Z",
+          "verdict": "NOT_QUALIFYING"
+        },
+        "snapshot_digest": "sha256:b61b807b4e95ecf171198463a43c06cf51061e0f3dbbdc9a5fdbfc5e4a9379f6",
+        "sources": [
+          {
+            "available": true,
+            "byte_count": 5007,
+            "content_digest": "sha256:7331dd0e004534847a44edef0b3e683440d237bcc2913675e529ed88926690b4",
+            "kept_byte_count": 5000,
+            "status": "truncated",
+            "text": "{\"page\":{\"id\":\"kctbh9vrtdwd\",\"name\":\"GitHub\",\"url\":\"https://www.githubstatus.com\",\"time_zone\":\"Etc/UTC\",\"updated_at\":\"2026-11-10T21:34:20.716Z\"},\"incident\":{\"id\":\"c9px7cw2ghrs\",\"name\":\"Increased timeouts due to surge in anonymous users\",\"status\":\"resolved\",\"created_at\":\"2026-11-09T05:59:07.851Z\",\"updated_at\":\"2026-11-09T09:09:56.206Z\",\"monitoring_at\":\"2026-11-09T06:51:26.463Z\",\"resolved_at\":\"2026-11-09T09:09:56.174Z\",\"impact\":\"minor\",\"shortlink\":\"https://stspg.io/jztczfplj6yb\",\"started_at\":\"2026-11-09T05:59:07.841Z\",\"page_id\":\"kctbh9vrtdwd\",\"incident_updates\":[{\"id\":\"glmdcqw20zlt\",\"status\":\"resolved\",\"body\":\"This incident has been resolved. Thank you for your patience and understanding as we addressed this issue. A detailed root cause analysis will be shared as soon as it is available.\",\"incident_id\":\"c9px7cw2ghrs\",\"created_at\":\"2026-11-09T09:09:56.174Z\",\"updated_at\":\"2026-11-09T09:09:56.174Z\",\"display_at\":\"2026-11-09T09:09:56.174Z\",\"affected_components\":null,\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"0k83qj2nj451\",\"status\":\"monitoring\",\"body\":\"We are resolving this incident as error rates have remained low and we have prepared additional protections.\",\"incident_id\":\"c9px7cw2ghrs\",\"created_at\":\"2026-11-09T09:09:47.536Z\",\"updated_at\":\"2026-11-09T09:09:47.536Z\",\"display_at\":\"2026-11-09T09:09:47.536Z\",\"affected_components\":null,\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"2rq2wy0hb2nr\",\"status\":\"monitoring\",\"body\":\"The degradation has been mitigated. We are monitoring to ensure stability.\",\"incident_id\":\"c9px7cw2ghrs\",\"created_at\":\"2026-11-09T09:05:46.666Z\",\"updated_at\":\"2026-11-09T09:05:46.666Z\",\"display_at\":\"2026-11-09T09:05:46.666Z\",\"affected_components\":null,\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"3j5gltjsljdq\",\"status\":\"investigating\",\"body\":\"Error rates have declined again, and we’re preparing targeted traffic controls while monitoring for a recurrence. Logged-in users and authenticated requests have not been affected.\",\"incident_id\":\"c9px7cw2ghrs\",\"created_at\":\"2026-11-09T08:47:55.788Z\",\"updated_at\":\"2026-11-09T08:47:55.788Z\",\"display_at\":\"2026-11-09T08:47:55.788Z\",\"affected_components\":null,\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"7jgw9xn6y543\",\"status\":\"investigating\",\"body\":\"We are continuing to observe high rates of 504 errors for anonymous requests. We are continuing to work on mitigation. Logged-in users and authenticated requests are unaffected.\",\"incident_id\":\"c9px7cw2ghrs\",\"created_at\":\"2026-11-09T08:16:25.172Z\",\"updated_at\":\"2026-11-09T08:16:25.172Z\",\"display_at\":\"2026-11-09T08:16:25.172Z\",\"affected_components\":null,\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"24v6t4v43z0y\",\"status\":\"investigating\",\"body\":\"We have observed a repeated increase in 504 errors for anonymous and unauthenticated traffic, including users who are not logged in and release downloads. We are continuing to investigate and  apply mitigations.\",\"incident_id\":\"c9px7cw2ghrs\",\"created_at\":\"2026-11-09T07:43:15.424Z\",\"updated_at\":\"2026-11-09T07:43:15.424Z\",\"display_at\":\"2026-11-09T07:43:15.424Z\",\"affected_components\":null,\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"fvc91d26t7kh\",\"status\":\"monitoring\",\"body\":\"The problem with anonymous traffic receiving 504 status codes has been mitigated. We are continuing to observe for an abundance of caution.\",\"incident_id\":\"c9px7cw2ghrs\",\"created_at\":\"2026-11-09T07:03:38.015Z\",\"updated_at\":\"2026-11-09T07:03:38.015Z\",\"display_at\":\"2026-11-09T07:03:38.015Z\",\"affected_components\":null,\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"4f4dlr06hyyx\",\"status\":\"monitoring\",\"body\":\"The degradation has been mitigated. We are monitoring to ensure stability.\",\"incident_id\":\"c9px7cw2ghrs\",\"created_at\":\"2026-11-09T06:51:26.463Z\",\"updated_at\":\"2026-11-09T06:51:26.463Z\",\"display_at\":\"2026-11-09T06:51:26.463Z\",\"affected_components\":null,\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"w1mdwvb9yj98\",\"status\":\"investigating\",\"body\":\"We are debugging a spike in anonymous traffic. Some users who are not logged in may see errors on the site. CI jobs and release downloads may fail with a 504 Gateway Timeout status if they make anonymous calls.\",\"incident_id\":\"c9px7cw2ghrs\",\"created_at\":\"2026-11-09T06:30:44.187Z\",\"updated_at\":\"2026-11-09T06:30:44.187Z\",\"display_at\":\"2026-11-09T06:30:44.187Z\",\"affected_components\":null,\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"vw96pl4fqnzn\",\"status\":\"investigating\",\"body\":\"We are investigating reports of impacted performance for some GitHub services.\",\"incident_id\":\"c9px7cw2ghrs\",\"created_at\":\"2026-11-09T05:59:07.907Z\",\"updated_at\":\"2026-11-09T05:59:07.907Z\",\"display_at\":\"2026-11-09T05:59:07.907Z\",\"affected_components\":null,\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null}],\"components\":[],\"reminder_intervals\"",
+            "url": "https://www.githubstatus.com/api/v2/incidents/c9px7cw2ghrs.json"
+          }
+        ]
+      }
+    },
+    {
+      "method": "get_sources",
+      "args": [
+        "minor"
+      ],
+      "value": [
+        {
+          "available": true,
+          "byte_count": 5007,
+          "content_digest": "sha256:7331dd0e004534847a44edef0b3e683440d237bcc2913675e529ed88926690b4",
+          "kept_byte_count": 5000,
+          "status": "truncated",
+          "text": "{\"page\":{\"id\":\"kctbh9vrtdwd\",\"name\":\"GitHub\",\"url\":\"https://www.githubstatus.com\",\"time_zone\":\"Etc/UTC\",\"updated_at\":\"2026-11-10T21:34:20.716Z\"},\"incident\":{\"id\":\"c9px7cw2ghrs\",\"name\":\"Increased timeouts due to surge in anonymous users\",\"status\":\"resolved\",\"created_at\":\"2026-11-09T05:59:07.851Z\",\"updated_at\":\"2026-11-09T09:09:56.206Z\",\"monitoring_at\":\"2026-11-09T06:51:26.463Z\",\"resolved_at\":\"2026-11-09T09:09:56.174Z\",\"impact\":\"minor\",\"shortlink\":\"https://stspg.io/jztczfplj6yb\",\"started_at\":\"2026-11-09T05:59:07.841Z\",\"page_id\":\"kctbh9vrtdwd\",\"incident_updates\":[{\"id\":\"glmdcqw20zlt\",\"status\":\"resolved\",\"body\":\"This incident has been resolved. Thank you for your patience and understanding as we addressed this issue. A detailed root cause analysis will be shared as soon as it is available.\",\"incident_id\":\"c9px7cw2ghrs\",\"created_at\":\"2026-11-09T09:09:56.174Z\",\"updated_at\":\"2026-11-09T09:09:56.174Z\",\"display_at\":\"2026-11-09T09:09:56.174Z\",\"affected_components\":null,\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"0k83qj2nj451\",\"status\":\"monitoring\",\"body\":\"We are resolving this incident as error rates have remained low and we have prepared additional protections.\",\"incident_id\":\"c9px7cw2ghrs\",\"created_at\":\"2026-11-09T09:09:47.536Z\",\"updated_at\":\"2026-11-09T09:09:47.536Z\",\"display_at\":\"2026-11-09T09:09:47.536Z\",\"affected_components\":null,\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"2rq2wy0hb2nr\",\"status\":\"monitoring\",\"body\":\"The degradation has been mitigated. We are monitoring to ensure stability.\",\"incident_id\":\"c9px7cw2ghrs\",\"created_at\":\"2026-11-09T09:05:46.666Z\",\"updated_at\":\"2026-11-09T09:05:46.666Z\",\"display_at\":\"2026-11-09T09:05:46.666Z\",\"affected_components\":null,\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"3j5gltjsljdq\",\"status\":\"investigating\",\"body\":\"Error rates have declined again, and we’re preparing targeted traffic controls while monitoring for a recurrence. Logged-in users and authenticated requests have not been affected.\",\"incident_id\":\"c9px7cw2ghrs\",\"created_at\":\"2026-11-09T08:47:55.788Z\",\"updated_at\":\"2026-11-09T08:47:55.788Z\",\"display_at\":\"2026-11-09T08:47:55.788Z\",\"affected_components\":null,\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"7jgw9xn6y543\",\"status\":\"investigating\",\"body\":\"We are continuing to observe high rates of 504 errors for anonymous requests. We are continuing to work on mitigation. Logged-in users and authenticated requests are unaffected.\",\"incident_id\":\"c9px7cw2ghrs\",\"created_at\":\"2026-11-09T08:16:25.172Z\",\"updated_at\":\"2026-11-09T08:16:25.172Z\",\"display_at\":\"2026-11-09T08:16:25.172Z\",\"affected_components\":null,\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"24v6t4v43z0y\",\"status\":\"investigating\",\"body\":\"We have observed a repeated increase in 504 errors for anonymous and unauthenticated traffic, including users who are not logged in and release downloads. We are continuing to investigate and  apply mitigations.\",\"incident_id\":\"c9px7cw2ghrs\",\"created_at\":\"2026-11-09T07:43:15.424Z\",\"updated_at\":\"2026-11-09T07:43:15.424Z\",\"display_at\":\"2026-11-09T07:43:15.424Z\",\"affected_components\":null,\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"fvc91d26t7kh\",\"status\":\"monitoring\",\"body\":\"The problem with anonymous traffic receiving 504 status codes has been mitigated. We are continuing to observe for an abundance of caution.\",\"incident_id\":\"c9px7cw2ghrs\",\"created_at\":\"2026-11-09T07:03:38.015Z\",\"updated_at\":\"2026-11-09T07:03:38.015Z\",\"display_at\":\"2026-11-09T07:03:38.015Z\",\"affected_components\":null,\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"4f4dlr06hyyx\",\"status\":\"monitoring\",\"body\":\"The degradation has been mitigated. We are monitoring to ensure stability.\",\"incident_id\":\"c9px7cw2ghrs\",\"created_at\":\"2026-11-09T06:51:26.463Z\",\"updated_at\":\"2026-11-09T06:51:26.463Z\",\"display_at\":\"2026-11-09T06:51:26.463Z\",\"affected_components\":null,\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"w1mdwvb9yj98\",\"status\":\"investigating\",\"body\":\"We are debugging a spike in anonymous traffic. Some users who are not logged in may see errors on the site. CI jobs and release downloads may fail with a 504 Gateway Timeout status if they make anonymous calls.\",\"incident_id\":\"c9px7cw2ghrs\",\"created_at\":\"2026-11-09T06:30:44.187Z\",\"updated_at\":\"2026-11-09T06:30:44.187Z\",\"display_at\":\"2026-11-09T06:30:44.187Z\",\"affected_components\":null,\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"vw96pl4fqnzn\",\"status\":\"investigating\",\"body\":\"We are investigating reports of impacted performance for some GitHub services.\",\"incident_id\":\"c9px7cw2ghrs\",\"created_at\":\"2026-11-09T05:59:07.907Z\",\"updated_at\":\"2026-11-09T05:59:07.907Z\",\"display_at\":\"2026-11-09T05:59:07.907Z\",\"affected_components\":null,\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null}],\"components\":[],\"reminder_intervals\"",
+          "url": "https://www.githubstatus.com/api/v2/incidents/c9px7cw2ghrs.json"
+        }
+      ]
+    },
+    {
+      "method": "get_policy",
+      "args": [
+        "outside"
+      ],
+      "value": {
+        "claim_deadline": "2026-12-06T00:00:00Z",
+        "coverage_units": 100,
+        "holder": "0x2c8eb5db1105a85be66badafed88d10cf393cdd8",
+        "policy_id": "outside",
+        "premium_units": 10,
+        "service_id": "actions_compact",
+        "status": "DENIED",
+        "trigger_id": "major_30",
+        "window_end": "2026-11-06T00:00:00Z",
+        "window_start": "2026-11-05T00:00:00Z"
+      }
+    },
+    {
+      "method": "get_assessment",
+      "args": [
+        "outside"
+      ],
+      "value": {
+        "evidence_digest": "sha256:649f4ab9a06057fb54c5c29f79a2234275c1fcb86635b3c627feac8cb729deb9",
+        "input_snapshot_digest": "sha256:2e0a47af73482687e93a1c78ce6b60e6998638f23e1fb4f6c7f9531178a5d902",
+        "judgment": {
+          "end": "2026-11-04T18:16:08.361Z",
+          "incident": "Incident with Actions",
+          "quotes": {
+            "end": {
+              "line": "\"resolved_at\":\"2026-11-04T18:16:08.361Z\"",
+              "url": "https://www.githubstatus.com/api/v2/incidents/h02n9572mx9y.json"
+            },
+            "incident": {
+              "line": "\"name\":\"Incident with Actions\"",
+              "url": "https://www.githubstatus.com/api/v2/incidents/h02n9572mx9y.json"
+            },
+            "severity": {
+              "line": "\"impact\":\"major\"",
+              "url": "https://www.githubstatus.com/api/v2/incidents/h02n9572mx9y.json"
+            },
+            "start": {
+              "line": "\"started_at\":\"2026-11-04T17:40:33.662Z\"",
+              "url": "https://www.githubstatus.com/api/v2/incidents/h02n9572mx9y.json"
+            }
+          },
+          "severity": "major",
+          "start": "2026-11-04T17:40:33.662Z",
+          "verdict": "NOT_QUALIFYING"
+        },
+        "snapshot_digest": "sha256:4a30aa7fcc5f4507fb4c01949f4e753b2abd5d93f609a1f96e81e6e3ea6fae67",
+        "sources": [
+          {
+            "available": true,
+            "byte_count": 2965,
+            "content_digest": "sha256:73d9702fc271f79e1a7620bdea3098b95f71bb6e0f6a8fb7f953d280bcf7cba6",
+            "kept_byte_count": 2965,
+            "status": "fetched",
+            "text": "{\"page\":{\"id\":\"kctbh9vrtdwd\",\"name\":\"GitHub\",\"url\":\"https://www.githubstatus.com\",\"time_zone\":\"Etc/UTC\",\"updated_at\":\"2026-11-10T21:34:20.716Z\"},\"incident\":{\"id\":\"h02n9572mx9y\",\"name\":\"Incident with Actions\",\"status\":\"resolved\",\"created_at\":\"2026-11-04T17:40:33.675Z\",\"updated_at\":\"2026-11-07T01:10:18.506Z\",\"monitoring_at\":\"2026-11-04T18:07:51.114Z\",\"resolved_at\":\"2026-11-04T18:16:08.361Z\",\"impact\":\"major\",\"shortlink\":\"https://stspg.io/7pwv28hvkmz8\",\"started_at\":\"2026-11-04T17:40:33.662Z\",\"page_id\":\"kctbh9vrtdwd\",\"incident_updates\":[{\"id\":\"qlllwdjlwh6k\",\"status\":\"resolved\",\"body\":\"Please refer to the combined summary in this related incident: https://www.githubstatus.com/incidents/xr3myzj7ms51\",\"incident_id\":\"h02n9572mx9y\",\"created_at\":\"2026-11-04T18:16:08.361Z\",\"updated_at\":\"2026-11-07T01:10:18.501Z\",\"display_at\":\"2026-11-04T18:16:08.361Z\",\"affected_components\":[{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"operational\",\"new_status\":\"operational\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"dvjxb8x3vwd6\",\"status\":\"monitoring\",\"body\":\"The degradation affecting Actions has been mitigated. We are monitoring to ensure stability.\",\"incident_id\":\"h02n9572mx9y\",\"created_at\":\"2026-11-04T18:07:51.114Z\",\"updated_at\":\"2026-11-04T18:07:51.114Z\",\"display_at\":\"2026-11-04T18:07:51.114Z\",\"affected_components\":[{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"partial_outage\",\"new_status\":\"operational\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"6r53z2wtmk93\",\"status\":\"investigating\",\"body\":\"We have identified an issue with events that might trigger Actions. We have applied mitigations and are monitoring for recovery at this point. Customers may observe delayed status updates for their jobs.\",\"incident_id\":\"h02n9572mx9y\",\"created_at\":\"2026-11-04T17:53:11.120Z\",\"updated_at\":\"2026-11-04T17:53:11.120Z\",\"display_at\":\"2026-11-04T17:53:11.120Z\",\"affected_components\":[{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"partial_outage\",\"new_status\":\"partial_outage\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"81pt66zrbxnn\",\"status\":\"investigating\",\"body\":\"We are investigating reports of degraded availability for Actions\",\"incident_id\":\"h02n9572mx9y\",\"created_at\":\"2026-11-04T17:40:33.887Z\",\"updated_at\":\"2026-11-04T17:40:33.887Z\",\"display_at\":\"2026-11-04T17:40:33.887Z\",\"affected_components\":[{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"operational\",\"new_status\":\"partial_outage\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null}],\"components\":[{\"id\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"status\":\"operational\",\"created_at\":\"2019-11-13T18:02:19.432Z\",\"updated_at\":\"2026-11-10T17:28:17.860Z\",\"position\":7,\"description\":\"Workflows, Compute and Orchestration for GitHub Actions\",\"showcase\":true,\"start_date\":null,\"group_id\":null,\"page_id\":\"kctbh9vrtdwd\",\"group\":false,\"only_show_if_degraded\":false}],\"reminder_intervals\":null}}",
+            "url": "https://www.githubstatus.com/api/v2/incidents/h02n9572mx9y.json"
+          }
+        ]
+      }
+    },
+    {
+      "method": "get_sources",
+      "args": [
+        "outside"
+      ],
+      "value": [
+        {
+          "available": true,
+          "byte_count": 2965,
+          "content_digest": "sha256:73d9702fc271f79e1a7620bdea3098b95f71bb6e0f6a8fb7f953d280bcf7cba6",
+          "kept_byte_count": 2965,
+          "status": "fetched",
+          "text": "{\"page\":{\"id\":\"kctbh9vrtdwd\",\"name\":\"GitHub\",\"url\":\"https://www.githubstatus.com\",\"time_zone\":\"Etc/UTC\",\"updated_at\":\"2026-11-10T21:34:20.716Z\"},\"incident\":{\"id\":\"h02n9572mx9y\",\"name\":\"Incident with Actions\",\"status\":\"resolved\",\"created_at\":\"2026-11-04T17:40:33.675Z\",\"updated_at\":\"2026-11-07T01:10:18.506Z\",\"monitoring_at\":\"2026-11-04T18:07:51.114Z\",\"resolved_at\":\"2026-11-04T18:16:08.361Z\",\"impact\":\"major\",\"shortlink\":\"https://stspg.io/7pwv28hvkmz8\",\"started_at\":\"2026-11-04T17:40:33.662Z\",\"page_id\":\"kctbh9vrtdwd\",\"incident_updates\":[{\"id\":\"qlllwdjlwh6k\",\"status\":\"resolved\",\"body\":\"Please refer to the combined summary in this related incident: https://www.githubstatus.com/incidents/xr3myzj7ms51\",\"incident_id\":\"h02n9572mx9y\",\"created_at\":\"2026-11-04T18:16:08.361Z\",\"updated_at\":\"2026-11-07T01:10:18.501Z\",\"display_at\":\"2026-11-04T18:16:08.361Z\",\"affected_components\":[{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"operational\",\"new_status\":\"operational\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"dvjxb8x3vwd6\",\"status\":\"monitoring\",\"body\":\"The degradation affecting Actions has been mitigated. We are monitoring to ensure stability.\",\"incident_id\":\"h02n9572mx9y\",\"created_at\":\"2026-11-04T18:07:51.114Z\",\"updated_at\":\"2026-11-04T18:07:51.114Z\",\"display_at\":\"2026-11-04T18:07:51.114Z\",\"affected_components\":[{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"partial_outage\",\"new_status\":\"operational\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"6r53z2wtmk93\",\"status\":\"investigating\",\"body\":\"We have identified an issue with events that might trigger Actions. We have applied mitigations and are monitoring for recovery at this point. Customers may observe delayed status updates for their jobs.\",\"incident_id\":\"h02n9572mx9y\",\"created_at\":\"2026-11-04T17:53:11.120Z\",\"updated_at\":\"2026-11-04T17:53:11.120Z\",\"display_at\":\"2026-11-04T17:53:11.120Z\",\"affected_components\":[{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"partial_outage\",\"new_status\":\"partial_outage\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null},{\"id\":\"81pt66zrbxnn\",\"status\":\"investigating\",\"body\":\"We are investigating reports of degraded availability for Actions\",\"incident_id\":\"h02n9572mx9y\",\"created_at\":\"2026-11-04T17:40:33.887Z\",\"updated_at\":\"2026-11-04T17:40:33.887Z\",\"display_at\":\"2026-11-04T17:40:33.887Z\",\"affected_components\":[{\"code\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"old_status\":\"operational\",\"new_status\":\"partial_outage\"}],\"deliver_notifications\":true,\"custom_tweet\":null,\"tweet_id\":null}],\"components\":[{\"id\":\"br0l2tvcx85d\",\"name\":\"Actions\",\"status\":\"operational\",\"created_at\":\"2019-11-13T18:02:19.432Z\",\"updated_at\":\"2026-11-10T17:28:17.860Z\",\"position\":7,\"description\":\"Workflows, Compute and Orchestration for GitHub Actions\",\"showcase\":true,\"start_date\":null,\"group_id\":null,\"page_id\":\"kctbh9vrtdwd\",\"group\":false,\"only_show_if_degraded\":false}],\"reminder_intervals\":null}}",
+          "url": "https://www.githubstatus.com/api/v2/incidents/h02n9572mx9y.json"
+        }
+      ]
+    }
+  ],
+  "transaction_checks": [
+    {
+      "hash": "0xebb2c02b04550fe1def68e1df3f3ee36bf580e4127cd16d83f5774aff777fd8a",
+      "operation": "deployment",
+      "status": "FINALIZED",
+      "execution": "SUCCESS"
+    },
+    {
+      "hash": "0x7e4e5b609513a8ab929013c109e289740f30590efab6b0049b983073b4e0c4c3",
+      "operation": "deposit_1000",
+      "status": "FINALIZED",
+      "execution": "SUCCESS"
+    },
+    {
+      "hash": "0x53aea164bad4e2b45c54d4d084d3a13fdeabdc27d556a18ef7128d780fa8a611",
+      "operation": "buy_compact",
+      "status": "FINALIZED",
+      "execution": "SUCCESS"
+    },
+    {
+      "hash": "0xd483dcc626a2e0fde944529d61647cd48dd2423f8a55273364eef215ad37470a",
+      "operation": "buy_truncated",
+      "status": "FINALIZED",
+      "execution": "SUCCESS"
+    },
+    {
+      "hash": "0xc794a3c2394a77791634f2b2f9de201f8183fd3c9a7ad3699f62646a0b5056dc",
+      "operation": "buy_minor",
+      "status": "FINALIZED",
+      "execution": "SUCCESS"
+    },
+    {
+      "hash": "0xb9718d83e2ca7cfe458e33cfdc392d12c28ce840be5f32b034d2a8cffab8bc54",
+      "operation": "buy_outside",
+      "status": "FINALIZED",
+      "execution": "SUCCESS"
+    },
+    {
+      "hash": "0x174ba42a5573144bad3b5a73bd952e192bf5d5d042423a344f4d6f6007082261",
+      "operation": "reject_under_collateralising_withdrawal",
+      "status": "FINALIZED",
+      "execution": "ERROR"
+    },
+    {
+      "hash": "0x6d570cc831fac2f07c8647ee5973f59d5db3499f120be1e833832dab56425586",
+      "operation": "reject_overexposure_purchase",
+      "status": "FINALIZED",
+      "execution": "ERROR"
+    },
+    {
+      "hash": "0x1307bfb609eb87548518cd1793ed93ebcee1041e8bb6688a6bfe93d16ce3986e",
+      "operation": "claim_compact",
+      "status": "FINALIZED",
+      "execution": "SUCCESS"
+    },
+    {
+      "hash": "0x7e1237e70f501096b5f957bb99d6a0626c814d7c41b7e179cf6648954f7be8d0",
+      "operation": "claim_truncated",
+      "status": "FINALIZED",
+      "execution": "SUCCESS"
+    },
+    {
+      "hash": "0x4e154b312449ce9d55c8324cdfbda111b301867759e39089754e17ff16724d69",
+      "operation": "claim_minor",
+      "status": "FINALIZED",
+      "execution": "SUCCESS"
+    },
+    {
+      "hash": "0x3a411581f7aaae2811ef47ab9265380b37e68e5d33909301e91f404752a428f1",
+      "operation": "claim_outside",
+      "status": "FINALIZED",
+      "execution": "SUCCESS"
+    },
+    {
+      "hash": "0x9dc41be645dcca42638b79517236b6ec3530161526c28daddd46b0fbb3cedf29",
+      "operation": "reject_replay_compact",
+      "status": "FINALIZED",
+      "execution": "ERROR"
+    },
+    {
+      "hash": "0x3d78fb84d15bff5d1070c89a67c54c36e9fc4deeb63dd6034db11fde5c8d2198",
+      "operation": "reject_replay_outside",
+      "status": "FINALIZED",
+      "execution": "ERROR"
+    },
+    {
+      "hash": "0x2442bf47ecb94a896ebcd818b89d3903ef453fee4de0180603c2f385b98526bf",
+      "operation": "withdraw_remaining_840",
+      "status": "FINALIZED",
+      "execution": "SUCCESS"
+    }
+  ],
+  "source_sha256_matches": true,
+  "result": "PASS"
+}
