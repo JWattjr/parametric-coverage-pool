@@ -1,6 +1,6 @@
 # Direct test results
 
-69 parameter-expanded tests. Mocked local execution; not a live network demo.
+86 parameter-expanded tests. Mocked local execution; not a live network demo.
 
 | Test | Result |
 |---|---|
@@ -34,7 +34,6 @@
 | `tests.test_pool::test_validator_rejects_forged_records_and_judgments[small_original]` | PASS |
 | `tests.test_pool::test_validator_rejects_forged_records_and_judgments[kept_count]` | PASS |
 | `tests.test_pool::test_validator_rejects_forged_records_and_judgments[digest]` | PASS |
-| `tests.test_pool::test_validator_rejects_forged_records_and_judgments[same_size_text]` | PASS |
 | `tests.test_pool::test_validator_rejects_forged_records_and_judgments[available]` | PASS |
 | `tests.test_pool::test_validator_rejects_forged_records_and_judgments[extra]` | PASS |
 | `tests.test_pool::test_validator_rejects_forged_records_and_judgments[stale]` | PASS |
@@ -73,3 +72,21 @@
 | `tests.test_pool::test_model_quote_and_field_size_bounds` | PASS |
 | `tests.test_pool::test_historical_demo_mode_allows_replay_only_during_claim_period` | PASS |
 | `tests.test_pool::test_multiple_policies_preserve_backing_after_one_pays` | PASS |
+| `tests.test_pool::test_statuspage_resolved_before_outside_window_does_not_pay` | PASS |
+| `tests.test_pool::test_statuspage_metadata_timestamps_are_uncertain[end-updated_at]` | PASS |
+| `tests.test_pool::test_statuspage_metadata_timestamps_are_uncertain[start-created_at]` | PASS |
+| `tests.test_pool::test_statuspage_metadata_timestamps_are_uncertain[start-monitoring_at]` | PASS |
+| `tests.test_pool::test_statuspage_metadata_timestamps_are_uncertain[start-display_at]` | PASS |
+| `tests.test_pool::test_severity_value_may_differ_from_literal_quote_only_in_case` | PASS |
+| `tests.test_pool::test_timestamp_quote_markers_are_required_case_insensitively[BEGAN-RESOLVED-QUALIFYING]` | PASS |
+| `tests.test_pool::test_timestamp_quote_markers_are_required_case_insensitively[event time-resolved-UNCERTAIN]` | PASS |
+| `tests.test_pool::test_timestamp_quote_markers_are_required_case_insensitively[started_at-updated_at-UNCERTAIN]` | PASS |
+| `tests.test_pool::test_validator_agrees_on_facts_despite_page_updated_at_drift` | PASS |
+| `tests.test_pool::test_validator_compares_normalised_incident_facts[subminute-utc]` | PASS |
+| `tests.test_pool::test_validator_compares_normalised_incident_facts[milliseconds]` | PASS |
+| `tests.test_pool::test_validator_compares_normalised_incident_facts[normalised-title]` | PASS |
+| `tests.test_pool::test_validator_compares_normalised_incident_facts[normalised-severity]` | PASS |
+| `tests.test_pool::test_validator_compares_normalised_incident_facts[different-severity-same-verdict]` | PASS |
+| `tests.test_pool::test_validator_compares_normalised_incident_facts[different-minute]` | PASS |
+| `tests.test_pool::test_validator_disagrees_when_verdict_differs_despite_same_minute_buckets` | PASS |
+| `tests.test_pool::test_validator_must_find_its_quotes_in_its_own_text` | PASS |

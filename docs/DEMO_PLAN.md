@@ -1,10 +1,12 @@
 # Proposed StudioNet demo
 
+**Earliest deadline: 2026-12-04 at 19:00 UTC (20:00 Africa/Lagos). Complete the proposed sequence before this deadline, or redesign the plan using newly checked incidents.**
+
 Status: PLAN ONLY. No deployment, runtime RPC, transaction, publication, or Portal submission was performed. URL checks below were anonymous HTTP reads on 2026-11-10; exact timestamps, byte sizes, field presence, and SHA-256 values are in [incident-url-checks.json](../verification/incident-url-checks.json).
 
 ## Permanent incident evidence
 
-Use these incident-specific JSON representations on GitHub's real public status page, rather than the rolling incident feed. Each URL identifies one completed past incident. All four required literal fields (name, impact, started_at, resolved_at) were verified to occur within its retained prefix. Publisher revisions remain possible: compare the recorded digests before any future demo and report drift instead of claiming byte immutability.
+Use these incident-specific JSON representations on GitHub's real public status page, rather than the rolling incident feed. Each URL identifies one completed past incident. All four required literal fields (name, impact, started_at, resolved_at) were verified to occur within its retained prefix. Recorded digests will drift because `page.updated_at` changes even when incident facts do not. Compare the incident identifier/title, severity, `started_at`, and `resolved_at` before a future demo instead of requiring digest equality. Never substitute incident `updated_at`, creation/monitoring/display times, or page-level timestamps for the incident endpoints. Digests remain evidence records of each fetch, not a cross-fetch agreement gate.
 
 | Service fixture | Specific incident URL | Anonymous HTTP | Original bytes | Kept bytes | Recorded impact |
 |---|---|---:|---:|---:|---|

@@ -28,6 +28,10 @@ The Windows/legacy-SDK fixture is copied unchanged from the auction. Tests use i
 4. After the window ends, and through the inclusive claim deadline, only its holder may claim. A qualifying claim pays the coverage once. A determinate nonqualifying claim closes as DENIED. UNCERTAIN or a failed source leaves the policy OPEN and every balance unchanged, retaining its latest assessment for inspection and allowing retry.
 5. Anyone may expire an OPEN policy strictly after its claim deadline, releasing exposure without refunding the premium.
 
+## Historical demo mode
+
+`historical_demo_mode` exists only to replay past incidents in the demo. It is fixed at deployment and visible in `get_pool`. It must be `false` for any real use.
+
 ## API
 
 Constructor: `pool_id`, `services_json`, `triggers_json`, `premium_bps`, `claim_period_seconds`, optional `historical_demo_mode=false`. See [constructor.json](examples/constructor.json).
@@ -45,6 +49,6 @@ Views: `get_pool`, `get_policy`, `get_account`, `get_accounting`, `get_assessmen
 - [Exact verification transcript](verification/checks.txt)
 - [Per-case test results](verification/test-results.md)
 
-No deployment, push, GitHub repository creation, visibility change, or Portal submission is included. Public URL availability was checked anonymously for the demo plan only. Stable incident-specific URLs are not immutable publisher commitments; strict evidence comparisons can reject changing responses. The fixed severity taxonomy deliberately treats other labels as UNCERTAIN. No legal coverage, real insurance, payment custody, publisher authentication, or production underwriting is implemented.
+No deployment, push, GitHub repository creation, visibility change, or Portal submission is included. Public URL availability was checked anonymously for the demo plan only. Stable incident-specific URLs are not immutable publisher commitments; validators compare incident facts rather than response bytes. The fixed severity taxonomy deliberately treats other labels as UNCERTAIN. No legal coverage, real insurance, payment custody, publisher authentication, or production underwriting is implemented.
 
-Final local result: **69 passed in 8.93s**; lint 3/3 and SDK validation passed (11 methods: 6 views, 5 writes; 6 constructor parameters). ABI extraction passed. The I200 informational notice reports a newer runner in the cached bundle; the auction runner remains pinned. An initial unpinned release lookup was interrupted before testing; its transcript is retained separately.
+Final local result: **86 passed in 17.06s**; lint 3/3 and SDK validation passed (11 methods: 6 views, 5 writes; 6 constructor parameters). ABI extraction passed. The I200 informational notice reports a newer runner in the cached bundle; the auction runner remains pinned. An initial unpinned release lookup was interrupted before testing; its transcript is retained separately.

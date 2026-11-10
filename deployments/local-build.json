@@ -11,11 +11,11 @@
   "portal_submitted": false,
   "runner": "py-genlayer:1jb45aa8ynh2a9c9xn3b7qqh8sm5q93hwfp7jqmwsfhh8jpz09h6",
   "verification": {
-    "checked_at_utc": "2026-11-10T20:48:00.119804+00:00",
-    "contract_sha256": "69749c18784d789e1a94758534050132dd275f0a4c7b1814ded8faa22e31e461",
+    "checked_at_utc": "2026-11-10T22:41:24.136891+00:00",
+    "contract_sha256": "5f6539b30c4987ff50a12da559c7aab40a9b53d87674d9e4de9daf9cc610ca4f",
     "lint_and_sdk_validation": "PASS",
     "direct_tests": {
-      "passed": 69,
+      "passed": 86,
       "failed": 0
     },
     "transcript": "verification/checks.txt",

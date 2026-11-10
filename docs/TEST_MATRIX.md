@@ -37,8 +37,19 @@ All financial scenarios assert the exposed conservation identity and collateral 
 | Historical demo mode allows replay only during claim period | `test_historical_demo_mode_allows_replay_only_during_claim_period` |
 | Multiple policies preserve backing after one pays | `test_multiple_policies_preserve_backing_after_one_pays` |
 
+| Incident resolved before an outside policy window does not pay despite later updates | `test_statuspage_resolved_before_outside_window_does_not_pay` |
+| Update, creation, monitoring and display timestamps lack valid incident endpoint support | `test_statuspage_metadata_timestamps_are_uncertain` |
+| Uppercase model severity is supported by lowercase page severity | `test_severity_value_may_differ_from_literal_quote_only_in_case` |
+| Start/resolution quote markers are mandatory and case insensitive | `test_timestamp_quote_markers_are_required_case_insensitively` |
+| Different page.updated_at bytes/digests still agree on facts; leader evidence stays stored | `test_validator_agrees_on_facts_despite_page_updated_at_drift` |
+| UTC whole-minute buckets, title whitespace/case and severity case are normalised; different severity/minutes disagree | `test_validator_compares_normalised_incident_facts` |
+| Exact duration yielding a different verdict cannot be hidden by matching minute buckets | `test_validator_disagrees_when_verdict_differs_despite_same_minute_buckets` |
+| Validators must support their own quotes from their own fetched text | `test_validator_must_find_its_quotes_in_its_own_text` |
+
 Required gates run sequentially: `genvm-lint check` (AST lint plus SDK validation), then `pytest`. Runner-update information does not change the pinned header. No dependencies are upgraded. The transcript records exact commands, stdout/stderr, exit codes, and the tested contract SHA-256. ABI extraction is recorded after the tests.
+
+The Statuspage-shaped fixture deliberately separates Jan 1 incident resolution from Jan 5 updates, with the outside policy window on Jan 2-3. Validator agreement tests replace the node's web/model mocks between leader execution and callback validation, so each node actually validates its own page and quotes. Structural truncation/count/digest rejection tests remain; byte equality is no longer an agreement condition.
 
 The historical demo-mode tests additionally cover the explicitly selected replay facility, while default-mode tests reject retroactive purchases. Bounds include services, triggers, URLs, configuration text, per-holder and global policy counts, global accounts, cumulative units, shares, kept body bytes, incident fields, and quote sizes.
 
-Final result on 2026-11-10: **69/69 PASS**, 0 failed, in 8.93 seconds. GenVM lint passed 3 checks; SDK validation passed with 11 public methods and 6 constructor parameters. `GENVM_VERSION=v0.6.0-rc5` selects an already cached bundle, not a contract runner change. See the full transcript for I200 runner-update information. An initial unpinned release lookup was interrupted before tests; the final pinned sequence passed in order.
+Final result on 2026-11-10: **86/86 PASS**, 0 failed, in 17.06 seconds. GenVM lint passed 3 checks; SDK validation passed with 11 public methods and 6 constructor parameters. `GENVM_VERSION=v0.6.0-rc5` selects an already cached bundle, not a contract runner change. See the full transcript for I200 runner-update information. An initial unpinned release lookup was interrupted before tests; the final pinned sequence passed in order.

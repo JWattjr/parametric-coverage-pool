@@ -1,6 +1,7 @@
 import copy
 import hashlib
 import json
+from pathlib import Path
 
 import pytest
 
@@ -55,6 +56,7 @@ def buy(contract, vm, holder, amount=100, identity="policy", **overrides):
 def finding(severity="MAJOR", start="2030-01-02T10:00:00Z", end="2030-01-02T11:00:00Z", incident="API outage", verdict="QUALIFYING"):
     values = dict(incident=incident, severity=severity, start=start, end=end)
     lines = {field: f"{field}: {value}" for field, value in values.items()}
+    lines["end"] = f"resolved end: {end}"
     return dict(verdict=verdict, **values, quotes={field: {"url": URL, "line": line} for field, line in lines.items()}), "\n".join(lines.values())
 
 
@@ -289,7 +291,7 @@ def test_truncated_available_prefix_can_pay(pool, direct_vm):
     conserved(pool)
 
 
-@pytest.mark.parametrize("mutation", ["status", "small_original", "kept_count", "digest", "same_size_text", "available", "extra", "stale", "verdict", "quote", "field"])
+@pytest.mark.parametrize("mutation", ["status", "small_original", "kept_count", "digest", "available", "extra", "stale", "verdict", "quote", "field"])
 def test_validator_rejects_forged_records_and_judgments(pool, direct_vm, mutation):
     result, text = finding()
     mock(direct_vm, result, text + "x" * 6000)
@@ -306,9 +308,6 @@ def test_validator_rejects_forged_records_and_judgments(pool, direct_vm, mutatio
         source["kept_byte_count"] -= 1
     elif mutation == "digest":
         source["content_digest"] = "sha256:" + "0" * 64
-    elif mutation == "same_size_text":
-        source["text"] = source["text"][:-1] + "y"
-        source["content_digest"] = "sha256:" + hashlib.sha256(source["text"].encode()).hexdigest()
     elif mutation == "available":
         source["available"] = False
     elif mutation == "extra":
@@ -321,8 +320,8 @@ def test_validator_rejects_forged_records_and_judgments(pool, direct_vm, mutatio
         forged["judgment"]["quotes"]["severity"]["line"] = "invented"
     else:
         forged["judgment"]["incident"] = "Another incident"
-    # Rebind all digests: even a self-consistent forgery must disagree with the
-    # validator's independent fetch and derivation, rather than pass hash shape checks.
+    # Rebinding digests cannot repair invalid source metadata, unsupported quotes,
+    # stale policy bindings, or inconsistent/different incident facts.
     forged["evidence_digest"] = digest({"input_snapshot_digest": forged["input_snapshot_digest"], "sources": forged["sources"]})
     forged["snapshot_digest"] = digest({"input_snapshot_digest": forged["input_snapshot_digest"], "evidence_digest": forged["evidence_digest"]})
     assert direct_vm.run_validator(leader_result=forged) is False
@@ -527,3 +526,120 @@ def test_multiple_policies_preserve_backing_after_one_pays(pool, direct_vm, dire
     assert accounting["open_exposure_units"] == pool.get_policy("other")["coverage_units"] == 900
     assert accounting["pool_capital_units"] == 1000
     assert pool.get_policy("other")["status"] == "OPEN"
+
+
+def statuspage_finding(page):
+    incident = page["incident"]
+    fields = {"incident": "name", "severity": "impact", "start": "started_at", "end": "resolved_at"}
+    result = {"verdict": "NOT_QUALIFYING", "quotes": {}}
+    for field, key_name in fields.items():
+        result[field] = incident[key_name]
+        result["quotes"][field] = {"url": URL, "line": json.dumps(key_name) + ": " + json.dumps(incident[key_name])}
+    return result, json.dumps(page, indent=2)
+
+
+@pytest.fixture
+def statuspage():
+    return json.loads((Path(__file__).parent / "fixtures/statuspage_incident.json").read_text())
+
+
+def test_statuspage_resolved_before_outside_window_does_not_pay(pool, direct_vm, statuspage):
+    # The policy covers Jan 2-3, after Jan 1 resolution but before Jan 5 updates.
+    result, body = statuspage_finding(statuspage)
+    mock(direct_vm, result, body)
+    assert pool.claim("policy")["judgment"]["verdict"] == "NOT_QUALIFYING"
+    assert pool.get_policy("policy")["status"] == "DENIED"
+    assert conserved(pool)["payouts_made_units"] == 0
+    assert direct_vm.run_validator()
+
+
+@pytest.mark.parametrize("field,key_name", [
+    ("end", "updated_at"), ("start", "created_at"), ("start", "monitoring_at"), ("start", "display_at"),
+])
+def test_statuspage_metadata_timestamps_are_uncertain(pool, direct_vm, statuspage, field, key_name):
+    result, body = statuspage_finding(statuspage)
+    result["verdict"] = "QUALIFYING"
+    result[field] = statuspage["incident"][key_name]
+    result["quotes"][field]["line"] = json.dumps(key_name) + ": " + json.dumps(result[field])
+    mock(direct_vm, result, body)
+    before = pool.get_accounting()
+    assert pool.claim("policy")["judgment"]["verdict"] == "UNCERTAIN"
+    assert pool.get_policy("policy")["status"] == "OPEN"
+    assert pool.get_accounting() == before
+    assert direct_vm.run_validator()
+    conserved(pool)
+
+
+def test_severity_value_may_differ_from_literal_quote_only_in_case(pool, direct_vm):
+    result, body = finding(severity="major")
+    result["severity"] = "MAJOR"
+    mock(direct_vm, result, body)
+    assert pool.claim("policy")["judgment"]["verdict"] == "QUALIFYING"
+    assert direct_vm.run_validator()
+    conserved(pool)
+
+
+@pytest.mark.parametrize("start_marker,end_marker,verdict", [
+    ("BEGAN", "RESOLVED", "QUALIFYING"),
+    ("event time", "resolved", "UNCERTAIN"),
+    ("started_at", "updated_at", "UNCERTAIN"),
+])
+def test_timestamp_quote_markers_are_required_case_insensitively(pool, direct_vm, start_marker, end_marker, verdict):
+    result, _ = finding()
+    result["quotes"]["start"]["line"] = start_marker + ": " + result["start"]
+    result["quotes"]["end"]["line"] = end_marker + ": " + result["end"]
+    mock(direct_vm, result)
+    assert pool.claim("policy")["judgment"]["verdict"] == verdict
+    assert direct_vm.run_validator()
+    conserved(pool)
+
+
+def test_validator_agrees_on_facts_despite_page_updated_at_drift(pool, direct_vm, statuspage):
+    leader, body = statuspage_finding(statuspage)
+    mock(direct_vm, leader, body)
+    pool.claim("policy")
+    stored = pool.get_assessment("policy")
+    statuspage["page"]["updated_at"] = "2030-01-06T16:00:00Z"
+    mine, changed_body = statuspage_finding(statuspage)
+    assert body != changed_body
+    assert hashlib.sha256(body.encode()).digest() != hashlib.sha256(changed_body.encode()).digest()
+    mock(direct_vm, mine, changed_body)
+    assert direct_vm.run_validator()
+    assert pool.get_assessment("policy") == stored  # Leader evidence remains the stored record.
+    conserved(pool)
+
+
+@pytest.mark.parametrize("changes,agrees", [
+    pytest.param(dict(start="2030-01-02T11:00:59.999+01:00", end="2030-01-02T12:00:59.999+01:00"), True, id="subminute-utc"),
+    pytest.param(dict(start="2030-01-02T10:00:00.028Z"), True, id="milliseconds"),
+    pytest.param(dict(incident="  API    OUTAGE  "), True, id="normalised-title"),
+    pytest.param(dict(severity="major"), True, id="normalised-severity"),
+    pytest.param(dict(severity="CRITICAL"), False, id="different-severity-same-verdict"),
+    pytest.param(dict(start="2030-01-02T10:01:00Z", end="2030-01-02T11:01:00Z"), False, id="different-minute"),
+])
+def test_validator_compares_normalised_incident_facts(pool, direct_vm, changes, agrees):
+    mock(direct_vm)
+    pool.claim("policy")
+    mine, body = finding(**changes)
+    mock(direct_vm, mine, body)
+    assert direct_vm.run_validator() is agrees
+    conserved(pool)
+
+
+def test_validator_disagrees_when_verdict_differs_despite_same_minute_buckets(pool, direct_vm):
+    leader, body = finding(start="2030-01-02T10:00:00.001Z", end="2030-01-02T10:30:00.001Z")
+    mock(direct_vm, leader, body)
+    assert pool.claim("policy")["judgment"]["verdict"] == "QUALIFYING"
+    mine, changed_body = finding(start="2030-01-02T10:00:00.001Z", end="2030-01-02T10:30:00.000Z")
+    mock(direct_vm, mine, changed_body)
+    assert not direct_vm.run_validator()
+    conserved(pool)
+
+
+def test_validator_must_find_its_quotes_in_its_own_text(pool, direct_vm):
+    mock(direct_vm)
+    pool.claim("policy")
+    mine, _ = finding()
+    mock(direct_vm, mine, "Incident details omitted in this node's fetched page.")
+    assert not direct_vm.run_validator()
+    conserved(pool)
