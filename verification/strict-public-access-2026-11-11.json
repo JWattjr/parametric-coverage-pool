@@ -1,0 +1,108 @@
+{
+  "checked_at_utc": "2026-11-11T14:06:07.762093+00:00",
+  "repository": "https://github.com/JWattjr/parametric-coverage-pool",
+  "visibility": "PUBLIC",
+  "verified_release_commit": "7b8ea781d152ef5b43e6d4c4c9e2a453315c58b7",
+  "checks": [
+    {
+      "url": "https://github.com/JWattjr/parametric-coverage-pool",
+      "status": 200,
+      "bytes": 241636,
+      "anonymous": true
+    },
+    {
+      "url": "https://github.com/JWattjr/parametric-coverage-pool/blob/92e7800ca6c52eaece182f550baade6d33a41c6c/contracts/parametric_coverage_pool.py",
+      "status": 200,
+      "bytes": 650288,
+      "anonymous": true
+    },
+    {
+      "url": "https://github.com/JWattjr/parametric-coverage-pool/blob/main/deployments/studionet-strict-release-2026-11-11.json",
+      "status": 200,
+      "bytes": 166908,
+      "anonymous": true
+    },
+    {
+      "url": "https://github.com/JWattjr/parametric-coverage-pool/blob/main/docs/STRICT_DEMO_RESULTS.md",
+      "status": 200,
+      "bytes": 202669,
+      "anonymous": true
+    },
+    {
+      "url": "https://github.com/JWattjr/parametric-coverage-pool/blob/main/docs/DISTINCTIVENESS.md",
+      "status": 200,
+      "bytes": 191755,
+      "anonymous": true
+    },
+    {
+      "url": "https://github.com/JWattjr/parametric-coverage-pool/blob/main/docs/TEST_MATRIX.md",
+      "status": 200,
+      "bytes": 199277,
+      "anonymous": true
+    },
+    {
+      "url": "https://github.com/JWattjr/parametric-coverage-pool/blob/main/SUBMISSION_DRAFT.md",
+      "status": 200,
+      "bytes": 185874,
+      "anonymous": true
+    }
+  ],
+  "deployed_source_anonymous_sha256_match": true,
+  "release_manifest_anonymous_git_blob_byte_match": true,
+  "release_manifest_working_json_content_match": true,
+  "sensitive_credential_fields_found": 0,
+  "contract_explorer_verification": {
+    "url": "https://explorer-studio.genlayer.com/address/0x90eC3dd7D0B644f817fF84320502e6cb63808Cb9",
+    "verified_in_browser": true,
+    "page_title": "GenLayer Studio Explorer",
+    "displayed_address": "0x90eC3dd7D0B644f817fF84320502e6cb63808Cb9",
+    "displayed_creator": "0xdB433ff614bDD1ecE21Aa97221C3E0a7ecf79c92",
+    "displayed_deploy_transaction": "0x8ad1833a51017fb942574a9689aea0928166e0b62cf807f261c1e39ec339b600",
+    "displayed_deployment_status": "FINALIZED",
+    "displayed_deployment_execution": "SUCCESS",
+    "network_domain": "explorer-studio.genlayer.com",
+    "checked_at_utc": "2026-11-11T13:44:44.853017+00:00"
+  },
+  "key_transaction_explorer_browser_checks": [
+    {
+      "label": "reject_overexposure_purchase",
+      "url": "https://explorer-studio.genlayer.com/tx/0x6108d6c7f7de0142d485ba727a3b9085a1abf4bae262cb6c51b1ea040ccb8495",
+      "finalized": true,
+      "execution": "ERROR",
+      "contract_address_matches": true,
+      "verified_in_browser": true
+    },
+    {
+      "label": "claim_compact",
+      "url": "https://explorer-studio.genlayer.com/tx/0xbeee12d85f852cd43c845eb9f02353c5416ed4e156efedc61ee2da1e6356c925",
+      "finalized": true,
+      "execution": "SUCCESS",
+      "contract_address_matches": true,
+      "verified_in_browser": true
+    },
+    {
+      "label": "claim_truncated",
+      "url": "https://explorer-studio.genlayer.com/tx/0xb56684af91010e2809cd30d293dabfb5f1dd20e58aea36ea34c9427768c5a940",
+      "finalized": true,
+      "execution": "SUCCESS",
+      "contract_address_matches": true,
+      "verified_in_browser": true
+    },
+    {
+      "label": "reject_replay_compact",
+      "url": "https://explorer-studio.genlayer.com/tx/0x555b947c2a1ac5ca43beae2a625b74f91cb7124dbb405cdc7eebc79c70621131",
+      "finalized": true,
+      "execution": "ERROR",
+      "contract_address_matches": true,
+      "verified_in_browser": true
+    },
+    {
+      "label": "reject_withdrawal_of_uncertain_backing",
+      "url": "https://explorer-studio.genlayer.com/tx/0xf2afdba950a734f596b205a0203a9728694bc54f4fcc92184000067d31bff0f1",
+      "finalized": true,
+      "execution": "ERROR",
+      "contract_address_matches": true,
+      "verified_in_browser": true
+    }
+  ]
+}
