@@ -1,5 +1,9 @@
 # Parametric Coverage Pool
 
+[Public GitHub repository](https://github.com/JWattjr/parametric-coverage-pool).
+
+Current revision: strict canonical agreement across every stored result field; any truncated source yields UNCERTAIN. A fresh demo must evidence this changed source. The earlier fact-only/truncation-positive demo is historical and does not prove this revision.
+
 `ParametricCoveragePool` coordinates underwriters and policyholders in a bounded synthetic-unit pool. Frozen public status-page URLs supply incident evidence. Validators independently fetch the same sources and extract literal incident facts; deterministic code checks severity, duration, overlap, collateral, shares, and settlement.
 
 This is an independent demo-unit ledger. Deposits and premiums are declared synthetic contributions, not assets received from a wallet. Withdrawals and payouts are accounting entries, not transfers of native value or tokens.
@@ -45,11 +49,12 @@ Views: `get_pool`, `get_policy`, `get_account`, `get_accounting`, `get_assessmen
 - [Design and rounding rules](docs/DESIGN.md)
 - [Tests and invariant mapping](docs/TEST_MATRIX.md)
 - [Local distinctiveness comparison](docs/DISTINCTIVENESS.md)
-- [StudioNet demo plan](docs/DEMO_PLAN.md)
-- [Recorded StudioNet demo results](docs/DEMO_RESULTS.md)
+- [Historical pre-strict demo plan](docs/DEMO_PLAN.md)
+- [Strict fresh-demo plan](docs/STRICT_DEMO_PLAN.md)
+- [Historical pre-strict StudioNet demo results](docs/DEMO_RESULTS.md)
 - [Exact verification transcript](verification/checks.txt)
 - [Per-case test results](verification/test-results.md)
 
-The authorised StudioNet demonstration is recorded in [DEMO_RESULTS.md](docs/DEMO_RESULTS.md). No push, GitHub repository creation, visibility change, or Portal submission occurred. Public source URLs were rechecked anonymously for that run. Stable incident-specific URLs are not immutable publisher commitments; validators compare incident facts rather than response bytes. The fixed severity taxonomy deliberately treats other labels as UNCERTAIN. No legal coverage, real insurance, payment custody, publisher authentication, or production underwriting is implemented.
+The authorised StudioNet demonstration is recorded in [DEMO_RESULTS.md](docs/DEMO_RESULTS.md). The repository is public; no Portal submission occurred. Public source URLs were rechecked anonymously for that run. Stable incident-specific URLs are not immutable publisher commitments; validators require equality of complete canonical results, including response evidence bytes. The fixed severity taxonomy deliberately treats other labels as UNCERTAIN. No legal coverage, real insurance, payment custody, publisher authentication, or production underwriting is implemented.
 
-Final local result: **86 passed in 17.06s**; lint 3/3 and SDK validation passed (11 methods: 6 views, 5 writes; 6 constructor parameters). ABI extraction passed. The I200 informational notice reports a newer runner in the cached bundle; the auction runner remains pinned. An initial unpinned release lookup was interrupted before testing; its transcript is retained separately.
+Current strict local result: **91 passed in 12.25s**; lint 3/3 and SDK validation passed (11 methods: 6 views, 5 writes; 6 constructor parameters). ABI extraction passed. The I200 informational notice reports a newer runner in the cached bundle; the auction runner remains pinned. An initial unpinned release lookup was interrupted before testing; its transcript is retained separately.

@@ -282,32 +282,39 @@ def test_quote_past_cut_point_is_uncertain(pool, direct_vm):
     assert direct_vm.run_validator()
 
 
-def test_truncated_available_prefix_can_pay(pool, direct_vm):
+def test_truncated_available_prefix_cannot_pay(pool, direct_vm):
     result, text = finding()
     mock(direct_vm, result, text + "x" * 6000)
-    assert pool.claim("policy")["judgment"]["verdict"] == "QUALIFYING"
+    before = pool.get_accounting()
+    assert pool.claim("policy")["judgment"]["verdict"] == "UNCERTAIN"
     assert pool.get_sources("policy")[0]["status"] == "truncated"
+    assert pool.get_sources("policy")[0]["available"] is True
+    assert pool.get_policy("policy")["status"] == "OPEN"
+    assert pool.get_accounting() == before
     assert direct_vm.run_validator()
     conserved(pool)
 
 
-@pytest.mark.parametrize("mutation", ["status", "small_original", "kept_count", "digest", "available", "extra", "stale", "verdict", "quote", "field"])
+@pytest.mark.parametrize("mutation", ["status", "small_original", "kept_count", "digest", "same_size_text", "available", "extra", "stale", "verdict", "quote", "field"])
 def test_validator_rejects_forged_records_and_judgments(pool, direct_vm, mutation):
     result, text = finding()
-    mock(direct_vm, result, text + "x" * 6000)
+    mock(direct_vm, result, text + "\nmetadata:stable")
     pool.claim("policy")
     assert direct_vm.run_validator()
     honest = pool.get_assessment("policy")
     forged = copy.deepcopy(honest)
     source = forged["sources"][0]
     if mutation == "status":
-        source["status"] = "fetched"
+        source["status"] = "truncated"
     elif mutation == "small_original":
-        source["byte_count"] = 5000
+        source["byte_count"] = 5001
     elif mutation == "kept_count":
         source["kept_byte_count"] -= 1
     elif mutation == "digest":
         source["content_digest"] = "sha256:" + "0" * 64
+    elif mutation == "same_size_text":
+        source["text"] = source["text"][:-1] + "y"
+        source["content_digest"] = "sha256:" + hashlib.sha256(source["text"].encode()).hexdigest()
     elif mutation == "available":
         source["available"] = False
     elif mutation == "extra":
@@ -594,7 +601,7 @@ def test_timestamp_quote_markers_are_required_case_insensitively(pool, direct_vm
     conserved(pool)
 
 
-def test_validator_agrees_on_facts_despite_page_updated_at_drift(pool, direct_vm, statuspage):
+def test_validator_rejects_page_updated_at_drift_even_with_same_facts(pool, direct_vm, statuspage):
     leader, body = statuspage_finding(statuspage)
     mock(direct_vm, leader, body)
     pool.claim("policy")
@@ -604,20 +611,21 @@ def test_validator_agrees_on_facts_despite_page_updated_at_drift(pool, direct_vm
     assert body != changed_body
     assert hashlib.sha256(body.encode()).digest() != hashlib.sha256(changed_body.encode()).digest()
     mock(direct_vm, mine, changed_body)
-    assert direct_vm.run_validator()
+    assert not direct_vm.run_validator()
     assert pool.get_assessment("policy") == stored  # Leader evidence remains the stored record.
     conserved(pool)
 
 
 @pytest.mark.parametrize("changes,agrees", [
-    pytest.param(dict(start="2030-01-02T11:00:59.999+01:00", end="2030-01-02T12:00:59.999+01:00"), True, id="subminute-utc"),
-    pytest.param(dict(start="2030-01-02T10:00:00.028Z"), True, id="milliseconds"),
-    pytest.param(dict(incident="  API    OUTAGE  "), True, id="normalised-title"),
-    pytest.param(dict(severity="major"), True, id="normalised-severity"),
+    pytest.param({}, True, id="identical-candidate"),
+    pytest.param(dict(start="2030-01-02T11:00:59.999+01:00", end="2030-01-02T12:00:59.999+01:00"), False, id="subminute-utc"),
+    pytest.param(dict(start="2030-01-02T10:00:00.028Z"), False, id="milliseconds"),
+    pytest.param(dict(incident="  API    OUTAGE  "), False, id="title-whitespace-case"),
+    pytest.param(dict(severity="major"), False, id="severity-case"),
     pytest.param(dict(severity="CRITICAL"), False, id="different-severity-same-verdict"),
     pytest.param(dict(start="2030-01-02T10:01:00Z", end="2030-01-02T11:01:00Z"), False, id="different-minute"),
 ])
-def test_validator_compares_normalised_incident_facts(pool, direct_vm, changes, agrees):
+def test_validator_requires_exact_stored_incident_facts(pool, direct_vm, changes, agrees):
     mock(direct_vm)
     pool.claim("policy")
     mine, body = finding(**changes)
@@ -642,4 +650,43 @@ def test_validator_must_find_its_quotes_in_its_own_text(pool, direct_vm):
     mine, _ = finding()
     mock(direct_vm, mine, "Incident details omitted in this node's fetched page.")
     assert not direct_vm.run_validator()
+    conserved(pool)
+
+
+def test_validator_rejects_supported_quote_change_with_same_verdict(pool, direct_vm):
+    result, body = finding()
+    alternative = "stated severity: MAJOR"
+    mock(direct_vm, result, body + "\n" + alternative)
+    pool.claim("policy")
+    assert direct_vm.run_validator()
+    forged = copy.deepcopy(pool.get_assessment("policy"))
+    forged["judgment"]["quotes"]["severity"]["line"] = alternative
+    assert forged["judgment"]["verdict"] == "QUALIFYING"
+    assert not direct_vm.run_validator(leader_result=forged)
+    conserved(pool)
+
+
+def test_truncated_source_cannot_be_forged_into_a_positive_candidate(pool, direct_vm):
+    result, body = finding()
+    mock(direct_vm, result, body + "x" * 6000)
+    pool.claim("policy")
+    forged = copy.deepcopy(pool.get_assessment("policy"))
+    forged["judgment"] = result
+    assert not direct_vm.run_validator(leader_result=forged)
+    assert pool.get_policy("policy")["status"] == "OPEN"
+    assert conserved(pool)["open_exposure_units"] == 100
+
+
+def test_uncertain_claim_keeps_backing_locked_during_partial_withdrawal(pool, direct_vm, direct_owner):
+    result, body = finding()
+    mock(direct_vm, result, body + "x" * 6000)
+    pool.claim("policy")
+    with direct_vm.prank(direct_owner):
+        # Capital 1010 / 1000 shares. Floor(901*1010/1000) = 910.
+        assert pool.withdraw(901) == 910
+        a = conserved(pool)
+        assert a["pool_capital_units"] == a["open_exposure_units"] == 100
+        with direct_vm.expect_revert("under-collateralise"):
+            pool.withdraw(99)
+    assert pool.get_policy("policy")["status"] == "OPEN"
     conserved(pool)

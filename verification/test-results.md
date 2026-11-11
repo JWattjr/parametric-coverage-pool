@@ -1,6 +1,6 @@
 # Direct test results
 
-86 parameter-expanded tests. Mocked local execution; not a live network demo.
+91 parameter-expanded tests. Mocked local execution; not a live network demo.
 
 | Test | Result |
 |---|---|
@@ -29,11 +29,12 @@
 | `tests.test_pool::test_fetch_byte_limits_and_utf8[invalid-interior-utf8]` | PASS |
 | `tests.test_pool::test_fetch_byte_limits_and_utf8[whitespace-truncated]` | PASS |
 | `tests.test_pool::test_quote_past_cut_point_is_uncertain` | PASS |
-| `tests.test_pool::test_truncated_available_prefix_can_pay` | PASS |
+| `tests.test_pool::test_truncated_available_prefix_cannot_pay` | PASS |
 | `tests.test_pool::test_validator_rejects_forged_records_and_judgments[status]` | PASS |
 | `tests.test_pool::test_validator_rejects_forged_records_and_judgments[small_original]` | PASS |
 | `tests.test_pool::test_validator_rejects_forged_records_and_judgments[kept_count]` | PASS |
 | `tests.test_pool::test_validator_rejects_forged_records_and_judgments[digest]` | PASS |
+| `tests.test_pool::test_validator_rejects_forged_records_and_judgments[same_size_text]` | PASS |
 | `tests.test_pool::test_validator_rejects_forged_records_and_judgments[available]` | PASS |
 | `tests.test_pool::test_validator_rejects_forged_records_and_judgments[extra]` | PASS |
 | `tests.test_pool::test_validator_rejects_forged_records_and_judgments[stale]` | PASS |
@@ -81,12 +82,16 @@
 | `tests.test_pool::test_timestamp_quote_markers_are_required_case_insensitively[BEGAN-RESOLVED-QUALIFYING]` | PASS |
 | `tests.test_pool::test_timestamp_quote_markers_are_required_case_insensitively[event time-resolved-UNCERTAIN]` | PASS |
 | `tests.test_pool::test_timestamp_quote_markers_are_required_case_insensitively[started_at-updated_at-UNCERTAIN]` | PASS |
-| `tests.test_pool::test_validator_agrees_on_facts_despite_page_updated_at_drift` | PASS |
-| `tests.test_pool::test_validator_compares_normalised_incident_facts[subminute-utc]` | PASS |
-| `tests.test_pool::test_validator_compares_normalised_incident_facts[milliseconds]` | PASS |
-| `tests.test_pool::test_validator_compares_normalised_incident_facts[normalised-title]` | PASS |
-| `tests.test_pool::test_validator_compares_normalised_incident_facts[normalised-severity]` | PASS |
-| `tests.test_pool::test_validator_compares_normalised_incident_facts[different-severity-same-verdict]` | PASS |
-| `tests.test_pool::test_validator_compares_normalised_incident_facts[different-minute]` | PASS |
+| `tests.test_pool::test_validator_rejects_page_updated_at_drift_even_with_same_facts` | PASS |
+| `tests.test_pool::test_validator_requires_exact_stored_incident_facts[identical-candidate]` | PASS |
+| `tests.test_pool::test_validator_requires_exact_stored_incident_facts[subminute-utc]` | PASS |
+| `tests.test_pool::test_validator_requires_exact_stored_incident_facts[milliseconds]` | PASS |
+| `tests.test_pool::test_validator_requires_exact_stored_incident_facts[title-whitespace-case]` | PASS |
+| `tests.test_pool::test_validator_requires_exact_stored_incident_facts[severity-case]` | PASS |
+| `tests.test_pool::test_validator_requires_exact_stored_incident_facts[different-severity-same-verdict]` | PASS |
+| `tests.test_pool::test_validator_requires_exact_stored_incident_facts[different-minute]` | PASS |
 | `tests.test_pool::test_validator_disagrees_when_verdict_differs_despite_same_minute_buckets` | PASS |
 | `tests.test_pool::test_validator_must_find_its_quotes_in_its_own_text` | PASS |
+| `tests.test_pool::test_validator_rejects_supported_quote_change_with_same_verdict` | PASS |
+| `tests.test_pool::test_truncated_source_cannot_be_forged_into_a_positive_candidate` | PASS |
+| `tests.test_pool::test_uncertain_claim_keeps_backing_locked_during_partial_withdrawal` | PASS |

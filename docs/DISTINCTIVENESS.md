@@ -14,3 +14,11 @@ Scope: source/document review of the closest local portfolio mechanisms and stan
 Source anchors: `ParametricCoveragePool.deposit`, `withdraw`, `buy_policy`, `claim`, `expire_policy`, and `get_accounting`. The invariant distinguishing this pool is that aggregate OPEN coverage never exceeds shared capital and withdrawals cannot remove backing, even after other policies earn premiums or pay losses.
 
 Evidence status: local lint/SDK validation and 86 mocked direct tests passed. The authorised StudioNet run and exact observed outcomes are recorded in [DEMO_RESULTS.md](DEMO_RESULTS.md); consult that record rather than treating the original proposed outcomes as observed. The comparison does not establish economic soundness, legal insurance, production safety, ecosystem originality, or future Portal acceptance.
+
+## Same-week local cohort review (2026-11-09 through 2026-11-15)
+
+Read-only portfolio Git metadata and the current README/DESIGN/DISTINCTIVENESS documents identify `calibrated-forecast-pool` (latest local commit `e6bd779`, 2026-11-11) as the other same-week project. Its mechanism is sealed probabilities plus equal stakes, followed by integer Brier-score allocation, forfeiture, dust and refund of a single rival-funded pot. It does not price underwriter shares against changing capital or lock withdrawals against concurrent independent coverage policies. This pool instead preserves `open exposure <= capital` across deposits, premium accrual, losses, partial withdrawals and policy expiry. The incident interpreter is shared infrastructure, not the claimed distinction. These participant actions and accounting transitions differ beyond domain labels.
+
+Only this project is changed or published by this task. The scan identifies local commit dates, not actual Portal submission dates, and cannot establish all projects in a review cohort. This is a local comparison, not an ecosystem-wide originality claim or a prediction of points. The user's November 11 guidance is learned review guidance, not official scoring criteria.
+
+The earlier demo demonstrates commit 8682be7 only. The strict revision requires full canonical agreement, rejects positive use of truncated evidence, and needs its own pushed source and new live evidence. See STRICT_DEMO_PLAN.md.

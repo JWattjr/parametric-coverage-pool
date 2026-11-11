@@ -1,24 +1,26 @@
 {
   "schema_version": "1.0",
   "project": "parametric-coverage-pool",
-  "status": "LOCAL_ONLY_NOT_DEPLOYED",
+  "status": "LOCAL_VALIDATED_STRICT_REVISION_PENDING_FRESH_DEMO",
   "contract_address": null,
   "network": null,
   "explorer_contract_url": null,
   "demo_executed": false,
   "pushed": false,
-  "github_repository_created": false,
+  "github_repository_created": true,
   "portal_submitted": false,
   "runner": "py-genlayer:1jb45aa8ynh2a9c9xn3b7qqh8sm5q93hwfp7jqmwsfhh8jpz09h6",
   "verification": {
-    "checked_at_utc": "2026-11-10T22:41:24.136891+00:00",
-    "contract_sha256": "5f6539b30c4987ff50a12da559c7aab40a9b53d87674d9e4de9daf9cc610ca4f",
+    "checked_at_utc": "2026-11-11T13:38:42.832636+00:00",
+    "contract_sha256": "60b74a83dcdafeeb61b4776bfb129e13b3ee3b8e479febe68648d658b106b1a8",
     "lint_and_sdk_validation": "PASS",
     "direct_tests": {
-      "passed": 86,
+      "passed": 91,
       "failed": 0
     },
     "transcript": "verification/checks.txt",
     "individual_results": "verification/test-results.md"
-  }
+  },
+  "revision": "STRICT_CANONICAL_ALL_FIELDS_FAIL_CLOSED_TRUNCATION",
+  "repository": "https://github.com/JWattjr/parametric-coverage-pool"
 }

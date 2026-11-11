@@ -1,0 +1,32 @@
+{
+  "checked_at_utc": "2026-11-11T00:05:25.728285+00:00",
+  "repository": "https://github.com/JWattjr/parametric-coverage-pool",
+  "visibility": "PUBLIC",
+  "checks": [
+    {
+      "url": "https://github.com/JWattjr/parametric-coverage-pool",
+      "status": 200,
+      "bytes": 234159,
+      "anonymous": true
+    },
+    {
+      "url": "https://github.com/JWattjr/parametric-coverage-pool/blob/8682be72a878885f612cb6e6e812455d8d4010c4/contracts/parametric_coverage_pool.py",
+      "status": 200,
+      "bytes": 650538,
+      "anonymous": true
+    },
+    {
+      "url": "https://github.com/JWattjr/parametric-coverage-pool/blob/main/deployments/studionet-demo-2026-11-11.json",
+      "status": 200,
+      "bytes": 166332,
+      "anonymous": true
+    },
+    {
+      "url": "https://github.com/JWattjr/parametric-coverage-pool/blob/main/docs/DEMO_RESULTS.md",
+      "status": 200,
+      "bytes": 200705,
+      "anonymous": true
+    }
+  ],
+  "deployed_source_anonymous_hash_match": true
+}

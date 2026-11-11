@@ -1,10 +1,8 @@
 # Test matrix
 
-Direct-mode tests use mocked web and model responses and explicitly invoke captured validator callbacks. They exercise independent fetch/derivation but do not establish network consensus. The Windows compatibility fixture is copied unchanged from the auction.
+Strict-revision direct tests mock web/model responses and explicitly exercise the independent validator callback. They do not establish live consensus. Lint must pass before this full suite runs.
 
-All financial scenarios assert the exposed conservation identity and collateral bound; rejected actions also check unchanged state where relevant. Per-parameter PASS/FAIL results and exact output are in [test-results.md](../verification/test-results.md) and [checks.txt](../verification/checks.txt).
-
-| Invariant or behavior | Test |
+| Behavior or invariant | Test |
 |---|---|
 | Qualifying payout and replayed claim reverts | `test_qualifying_payout_and_replayed_claim_reverts` |
 | Nonqualifying facts cannot pay even if model says qualifying | `test_nonqualifying_facts_cannot_pay_even_if_model_says_qualifying` |
@@ -20,7 +18,7 @@ All financial scenarios assert the exposed conservation identity and collateral 
 | Access and exact claim deadlines | `test_access_and_exact_claim_deadlines` |
 | Fetch byte limits and utf8 | `test_fetch_byte_limits_and_utf8` |
 | Quote past cut point is uncertain | `test_quote_past_cut_point_is_uncertain` |
-| Truncated available prefix can pay | `test_truncated_available_prefix_can_pay` |
+| Truncated available prefix cannot pay | `test_truncated_available_prefix_cannot_pay` |
 | Validator rejects forged records and judgments | `test_validator_rejects_forged_records_and_judgments` |
 | Unsupported literal fields are uncertain | `test_unsupported_literal_fields_are_uncertain` |
 | Malformed model reverts with no state change | `test_malformed_model_reverts_with_no_state_change` |
@@ -36,20 +34,22 @@ All financial scenarios assert the exposed conservation identity and collateral 
 | Model quote and field size bounds | `test_model_quote_and_field_size_bounds` |
 | Historical demo mode allows replay only during claim period | `test_historical_demo_mode_allows_replay_only_during_claim_period` |
 | Multiple policies preserve backing after one pays | `test_multiple_policies_preserve_backing_after_one_pays` |
+| Statuspage resolved before outside window does not pay | `test_statuspage_resolved_before_outside_window_does_not_pay` |
+| Statuspage metadata timestamps are uncertain | `test_statuspage_metadata_timestamps_are_uncertain` |
+| Severity value may differ from literal quote only in case | `test_severity_value_may_differ_from_literal_quote_only_in_case` |
+| Timestamp quote markers are required case insensitively | `test_timestamp_quote_markers_are_required_case_insensitively` |
+| Validator rejects page updated at drift even with same facts | `test_validator_rejects_page_updated_at_drift_even_with_same_facts` |
+| Validator requires exact stored incident facts | `test_validator_requires_exact_stored_incident_facts` |
+| Validator disagrees when verdict differs despite same minute buckets | `test_validator_disagrees_when_verdict_differs_despite_same_minute_buckets` |
+| Validator must find its quotes in its own text | `test_validator_must_find_its_quotes_in_its_own_text` |
+| Validator rejects supported quote change with same verdict | `test_validator_rejects_supported_quote_change_with_same_verdict` |
+| Truncated source cannot be forged into a positive candidate | `test_truncated_source_cannot_be_forged_into_a_positive_candidate` |
+| Uncertain claim keeps backing locked during partial withdrawal | `test_uncertain_claim_keeps_backing_locked_during_partial_withdrawal` |
 
-| Incident resolved before an outside policy window does not pay despite later updates | `test_statuspage_resolved_before_outside_window_does_not_pay` |
-| Update, creation, monitoring and display timestamps lack valid incident endpoint support | `test_statuspage_metadata_timestamps_are_uncertain` |
-| Uppercase model severity is supported by lowercase page severity | `test_severity_value_may_differ_from_literal_quote_only_in_case` |
-| Start/resolution quote markers are mandatory and case insensitive | `test_timestamp_quote_markers_are_required_case_insensitively` |
-| Different page.updated_at bytes/digests still agree on facts; leader evidence stays stored | `test_validator_agrees_on_facts_despite_page_updated_at_drift` |
-| UTC whole-minute buckets, title whitespace/case and severity case are normalised; different severity/minutes disagree | `test_validator_compares_normalised_incident_facts` |
-| Exact duration yielding a different verdict cannot be hidden by matching minute buckets | `test_validator_disagrees_when_verdict_differs_despite_same_minute_buckets` |
-| Validators must support their own quotes from their own fetched text | `test_validator_must_find_its_quotes_in_its_own_text` |
+The strict revision compares complete canonical candidates, not headline facts. The tests reject changed page bytes, subminute timestamps, severity spelling, supported-but-changed quotes, stale snapshots, inconsistent source records and forged metadata even when the verdict is unchanged. Identical candidates agree.
 
-Required gates run sequentially: `genvm-lint check` (AST lint plus SDK validation), then `pytest`. Runner-update information does not change the pinned header. No dependencies are upgraded. The transcript records exact commands, stdout/stderr, exit codes, and the tested contract SHA-256. ABI extraction is recorded after the tests.
+Truncated text remains available for inspection, with original/kept sizes and digest validated, but any truncated source forces UNCERTAIN and preserves every balance and OPEN exposure. A partially withdrawn pool must retain backing for that exposure. Original exact-at-limit, multibyte-cut, unavailable-source, unauthorized caller, replay, share rounding, expiry and conservation cases remain.
 
-The Statuspage-shaped fixture deliberately separates Jan 1 incident resolution from Jan 5 updates, with the outside policy window on Jan 2-3. Validator agreement tests replace the node's web/model mocks between leader execution and callback validation, so each node actually validates its own page and quotes. Structural truncation/count/digest rejection tests remain; byte equality is no longer an agreement condition.
+Every financial scenario asserts conservation and collateral, including rejected operations. Results are recorded in [test-results.md](../verification/test-results.md) and exact sequential lint/test output in [checks.txt](../verification/checks.txt). The changed source is not evidenced by the earlier 86-test run or earlier StudioNet receipts.
 
-The historical demo-mode tests additionally cover the explicitly selected replay facility, while default-mode tests reject retroactive purchases. Bounds include services, triggers, URLs, configuration text, per-holder and global policy counts, global accounts, cumulative units, shares, kept body bytes, incident fields, and quote sizes.
-
-Final result on 2026-11-10: **86/86 PASS**, 0 failed, in 17.06 seconds. GenVM lint passed 3 checks; SDK validation passed with 11 public methods and 6 constructor parameters. `GENVM_VERSION=v0.6.0-rc5` selects an already cached bundle, not a contract runner change. See the full transcript for I200 runner-update information. An initial unpinned release lookup was interrupted before tests; the final pinned sequence passed in order.
+Strict revision result on 2026-11-11: **91/91 PASS**, 0 failed, in 12.25 seconds. GenVM lint passed 3 checks and SDK validation passed with 11 methods (6 views, 5 writes), 6 constructor parameters. The runner remains pinned; I200 is informational.
