@@ -2,7 +2,9 @@
 
 [Public GitHub repository](https://github.com/JWattjr/parametric-coverage-pool).
 
-Current revision: strict canonical agreement across every stored result field; any truncated source yields UNCERTAIN. A fresh demo must evidence this changed source. The earlier fact-only/truncation-positive demo is historical and does not prove this revision.
+Current StudioNet contract: [GenLayer Explorer Contract](https://explorer-studio.genlayer.com/address/0x90eC3dd7D0B644f817fF84320502e6cb63808Cb9).
+
+Current revision: strict canonical agreement across every stored result field; any truncated source yields UNCERTAIN. The fresh strict demo is recorded in [STRICT_DEMO_RESULTS.md](docs/STRICT_DEMO_RESULTS.md). The earlier fact-only/truncation-positive demo is historical and does not prove this revision.
 
 `ParametricCoveragePool` coordinates underwriters and policyholders in a bounded synthetic-unit pool. Frozen public status-page URLs supply incident evidence. Validators independently fetch the same sources and extract literal incident facts; deterministic code checks severity, duration, overlap, collateral, shares, and settlement.
 
@@ -51,6 +53,8 @@ Views: `get_pool`, `get_policy`, `get_account`, `get_accounting`, `get_assessmen
 - [Local distinctiveness comparison](docs/DISTINCTIVENESS.md)
 - [Historical pre-strict demo plan](docs/DEMO_PLAN.md)
 - [Strict fresh-demo plan](docs/STRICT_DEMO_PLAN.md)
+- [Strict live results and three readiness gates](docs/STRICT_DEMO_RESULTS.md)
+- [Unsubmitted Portal note and evidence list](SUBMISSION_DRAFT.md)
 - [Historical pre-strict StudioNet demo results](docs/DEMO_RESULTS.md)
 - [Exact verification transcript](verification/checks.txt)
 - [Per-case test results](verification/test-results.md)

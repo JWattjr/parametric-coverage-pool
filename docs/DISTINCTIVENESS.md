@@ -22,3 +22,5 @@ Read-only portfolio Git metadata and the current README/DESIGN/DISTINCTIVENESS d
 Only this project is changed or published by this task. The scan identifies local commit dates, not actual Portal submission dates, and cannot establish all projects in a review cohort. This is a local comparison, not an ecosystem-wide originality claim or a prediction of points. The user's November 11 guidance is learned review guidance, not official scoring criteria.
 
 The earlier demo demonstrates commit 8682be7 only. The strict revision requires full canonical agreement, rejects positive use of truncated evidence, and needs its own pushed source and new live evidence. See STRICT_DEMO_PLAN.md.
+
+Current strict-revision evidence and the three separate readiness gates are recorded in [STRICT_DEMO_RESULTS.md](STRICT_DEMO_RESULTS.md). The earlier release remains historical.
